@@ -19,7 +19,7 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run Discord test
+      - name: Run Steam Deals
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: python test.py
+        run: python deals.py
