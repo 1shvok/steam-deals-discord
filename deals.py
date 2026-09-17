@@ -35,6 +35,13 @@ if not deals:
     print("No Steam deals found.")
     raise SystemExit(0)
 
+# Only send deals with 50% discount or more
+deals = [deal for deal in deals if float(deal["savings"]) >= 50]
+
+if not deals:
+    print("No Steam deals with 50%+ discount found.")
+    raise SystemExit(0)
+
 deal = deals[0]
 
 title = deal["title"]
