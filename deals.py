@@ -12,7 +12,7 @@ headers = {
 params = {
     "storeID": "1",
     "onSale": "1",
-    "pageSize": "1",
+    "pageSize": "50",
     "sortBy": "Savings",
     "desc": "1"
 }
