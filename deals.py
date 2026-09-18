@@ -35,6 +35,15 @@ if not deals:
     print("No Steam deals found.")
     raise SystemExit(0)
 
+print("Deals received from CheapShark:")
+
+for deal in deals[:10]:
+    print(
+        f"- {deal['title']} | "
+        f"{float(deal['savings']):.0f}% OFF | "
+        f"${deal['salePrice']}"
+    )
+
 # Only send deals with 50% discount or more
 deals = [deal for deal in deals if float(deal["savings"]) >= 50]
 
