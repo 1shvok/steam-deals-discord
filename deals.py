@@ -96,6 +96,22 @@ qualified_deals.sort(
 print(f"Total deals received: {len(all_deals)}")
 print(f"Deals with {MIN_DISCOUNT}%+ discount: {len(qualified_deals)}")
 
+# Show the highest discounts received
+all_deals_sorted = sorted(
+    all_deals,
+    key=lambda deal: float(deal["savings"]),
+    reverse=True
+)
+
+print("Highest discounts received:")
+
+for deal in all_deals_sorted[:10]:
+    print(
+        f"- {deal['title']} | "
+        f"{float(deal['savings']):.0f}% OFF | "
+        f"${deal['salePrice']}"
+    )
+
 if qualified_deals:
     print("Qualifying deals:")
 
