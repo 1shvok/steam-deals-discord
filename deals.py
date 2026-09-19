@@ -1,4 +1,3 @@
-```python
 import os
 import requests
 
@@ -220,4 +219,3 @@ else:
     print(discord_response.text)
 
     raise SystemExit(1)
-```
