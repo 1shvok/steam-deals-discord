@@ -1,0 +1,25 @@
+name: Test ITAD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Test ITAD API
+        env:
+          ITAD_API_KEY: ${{ secrets.ITAD_API_KEY }}
+        run: python itad_test.py
