@@ -10,7 +10,7 @@ params = {
     "shops": "61",
     "limit": 10,
     "sort": "-cut",
-    "filter": '{"cut":{"min":50,"max":null}}'
+    "filter": '{"cut":{"min":50}}'
 }
 
 headers = {
@@ -32,12 +32,33 @@ if response.status_code != 200:
 
 data = response.json()
 
+print("Response type:", type(data).__name__)
 print("Deals received:", len(data))
 
-for deal in data:
-    print(
-        f"{deal['title']} | "
-        f"{deal['deal']['cut']}% OFF | "
-        f"{deal['deal']['price']['amount']} "
-        f"{deal['deal']['price']['currency']}"
-    )
+for i, deal in enumerate(data, 1):
+    print(f"\n--- Deal {i} ---")
+    print("ID:", deal.get("id"))
+
+    if "title" in deal:
+        print("Title:", deal["title"])
+
+    if "current" in deal:
+        current = deal["current"]
+
+        print("Shop:", current["shop"]["name"])
+        print("Discount:", current["cut"], "%")
+        print(
+            "Price:",
+            current["price"]["amount"],
+            current["price"]["currency"]
+        )
+
+    if "deals" in deal:
+        for store_deal in deal["deals"]:
+            print("Shop:", store_deal["shop"]["name"])
+            print("Discount:", store_deal["cut"], "%")
+            print(
+                "Price:",
+                store_deal["price"]["amount"],
+                store_deal["price"]["currency"]
+            )
