@@ -1,4 +1,5 @@
 import os
+import json
 import requests
 
 API_KEY = os.environ["ITAD_API_KEY"]
@@ -32,33 +33,6 @@ if response.status_code != 200:
 
 data = response.json()
 
-print("Response type:", type(data).__name__)
-print("Deals received:", len(data))
-
-for i, deal in enumerate(data, 1):
-    print(f"\n--- Deal {i} ---")
-    print("ID:", deal.get("id"))
-
-    if "title" in deal:
-        print("Title:", deal["title"])
-
-    if "current" in deal:
-        current = deal["current"]
-
-        print("Shop:", current["shop"]["name"])
-        print("Discount:", current["cut"], "%")
-        print(
-            "Price:",
-            current["price"]["amount"],
-            current["price"]["currency"]
-        )
-
-    if "deals" in deal:
-        for store_deal in deal["deals"]:
-            print("Shop:", store_deal["shop"]["name"])
-            print("Discount:", store_deal["cut"], "%")
-            print(
-                "Price:",
-                store_deal["price"]["amount"],
-                store_deal["price"]["currency"]
-            )
+print("\n=== ITAD RESPONSE ===")
+print(json.dumps(data, indent=2, ensure_ascii=False))
+print("\n=== END RESPONSE ===")
