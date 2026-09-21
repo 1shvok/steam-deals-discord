@@ -1,4 +1,4 @@
-name: Test Discord Webhook
+name: Test ITAD Discord
 
 on:
   workflow_dispatch:
@@ -19,7 +19,8 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run Steam Deals
+      - name: Test ITAD Discord
         env:
+          ITAD_API_KEY: ${{ secrets.ITAD_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: python deals.py
+        run: python itad_test.py
