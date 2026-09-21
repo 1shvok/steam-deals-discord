@@ -7,7 +7,6 @@ API_KEY = os.environ["ITAD_API_KEY"]
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
 
 ITAD_URL = "https://api.isthereanydeal.com/deals/v2"
-HISTORY_FILE = "sent_deals.json"
 
 params = {
     "country": "PT",
@@ -20,19 +19,6 @@ params = {
 headers = {
     "ITAD-API-Key": API_KEY
 }
-
-
-# -------------------------
-# Load sent deals
-# -------------------------
-
-try:
-    with open(HISTORY_FILE, "r", encoding="utf-8") as file:
-        sent_deals = set(json.load(file))
-except FileNotFoundError:
-    sent_deals = set()
-
-print(f"Previously sent deals: {len(sent_deals)}")
 
 
 # -------------------------
@@ -59,7 +45,7 @@ print(f"Deals received: {len(deals)}")
 
 
 # -------------------------
-# Filter games
+# Filter games only
 # -------------------------
 
 games = []
@@ -69,20 +55,9 @@ for deal in deals:
     if deal.get("type") != "game":
         continue
 
-    deal_info = deal["deal"]
+    games.append(deal)
 
-    price = deal_info["price"]["amount"]
-    discount = deal_info["cut"]
-
-    deal_key = f'{deal["id"]}:{price}:{discount}'
-
-    if deal_key in sent_deals:
-        continue
-
-    games.append((deal, deal_key))
-
-
-print(f"New game deals: {len(games)}")
+print(f"Game deals: {len(games)}")
 
 
 # -------------------------
@@ -91,7 +66,7 @@ print(f"New game deals: {len(games)}")
 
 embeds = []
 
-for deal, deal_key in games:
+for deal in games:
 
     title = deal["title"]
     deal_info = deal["deal"]
@@ -115,27 +90,28 @@ for deal, deal_key in games:
         }
     }
 
-    embeds.append({
-        "embed": embed,
-        "deal_key": deal_key,
-        "title": title
-    })
+    embeds.append(embed)
 
 
 # -------------------------
-# Send in batches
+# Send embeds in batches
 # -------------------------
 
 BATCH_SIZE = 10
 
-sent_now = 0
+total_batches = (len(embeds) + BATCH_SIZE - 1) // BATCH_SIZE
 
-for i in range(0, len(embeds), BATCH_SIZE):
+print(f"Discord batches: {total_batches}")
 
-    batch = embeds[i:i + BATCH_SIZE]
+for batch_number, start in enumerate(
+    range(0, len(embeds), BATCH_SIZE),
+    start=1
+):
+
+    batch = embeds[start:start + BATCH_SIZE]
 
     payload = {
-        "embeds": [item["embed"] for item in batch]
+        "embeds": batch
     }
 
     while True:
@@ -147,53 +123,38 @@ for i in range(0, len(embeds), BATCH_SIZE):
         )
 
         if discord_response.status_code in (200, 204):
+            print(
+                f"Batch {batch_number}/{total_batches} "
+                f"sent successfully ({len(batch)} deals)."
+            )
             break
 
         if discord_response.status_code == 429:
 
             try:
                 retry_data = discord_response.json()
-                retry_after = float(retry_data.get("retry_after", 1))
+                retry_after = float(
+                    retry_data.get("retry_after", 1)
+                )
             except Exception:
                 retry_after = 1
 
             print(
-                f"Discord rate limit reached. "
+                f"Discord rate limit. "
                 f"Waiting {retry_after} seconds..."
             )
 
             time.sleep(retry_after + 0.2)
+
             continue
 
         print("Discord error:")
         print(discord_response.text)
         raise SystemExit(1)
 
-    print()
-    print(f"Discord batch sent: {len(batch)} deals")
-
-    for item in batch:
-        sent_deals.add(item["deal_key"])
-        sent_now += 1
-        print(f"Sent: {item['title']}")
-
     # Small pause between batches
     time.sleep(1)
 
 
-# -------------------------
-# Save history
-# -------------------------
-
-with open(HISTORY_FILE, "w", encoding="utf-8") as file:
-    json.dump(
-        sorted(sent_deals),
-        file,
-        indent=2,
-        ensure_ascii=False
-    )
-
-
 print()
-print(f"Sent this run: {sent_now}")
-print(f"Total saved deals: {len(sent_deals)}")
+print("All deals sent successfully!")
