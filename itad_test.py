@@ -1,5 +1,6 @@
 import json
 import os
+import time
 import requests
 
 API_KEY = os.environ["ITAD_API_KEY"]
@@ -31,7 +32,6 @@ try:
 except FileNotFoundError:
     sent_deals = set()
 
-
 print(f"Previously sent deals: {len(sent_deals)}")
 
 
@@ -59,12 +59,13 @@ print(f"Deals received: {len(deals)}")
 
 
 # -------------------------
-# Filter games only
+# Filter games
 # -------------------------
 
 games = []
 
 for deal in deals:
+
     if deal.get("type") != "game":
         continue
 
@@ -73,8 +74,6 @@ for deal in deals:
     price = deal_info["price"]["amount"]
     discount = deal_info["cut"]
 
-    # Unique notification ID.
-    # Same game + same price + same discount = same notification.
     deal_key = f'{deal["id"]}:{price}:{discount}'
 
     if deal_key in sent_deals:
@@ -87,10 +86,10 @@ print(f"New game deals: {len(games)}")
 
 
 # -------------------------
-# Send deals to Discord
+# Create Discord embeds
 # -------------------------
 
-sent_now = 0
+embeds = []
 
 for deal, deal_key in games:
 
@@ -116,30 +115,70 @@ for deal, deal_key in games:
         }
     }
 
+    embeds.append({
+        "embed": embed,
+        "deal_key": deal_key,
+        "title": title
+    })
+
+
+# -------------------------
+# Send in batches
+# -------------------------
+
+BATCH_SIZE = 10
+
+sent_now = 0
+
+for i in range(0, len(embeds), BATCH_SIZE):
+
+    batch = embeds[i:i + BATCH_SIZE]
+
     payload = {
-        "embeds": [embed]
+        "embeds": [item["embed"] for item in batch]
     }
 
-    discord_response = requests.post(
-        DISCORD_WEBHOOK_URL,
-        json=payload,
-        timeout=30
-    )
+    while True:
 
-    if discord_response.status_code not in (200, 204):
-        print(f"Discord error for {title}:")
+        discord_response = requests.post(
+            DISCORD_WEBHOOK_URL,
+            json=payload,
+            timeout=30
+        )
+
+        if discord_response.status_code in (200, 204):
+            break
+
+        if discord_response.status_code == 429:
+
+            try:
+                retry_data = discord_response.json()
+                retry_after = float(retry_data.get("retry_after", 1))
+            except Exception:
+                retry_after = 1
+
+            print(
+                f"Discord rate limit reached. "
+                f"Waiting {retry_after} seconds..."
+            )
+
+            time.sleep(retry_after + 0.2)
+            continue
+
+        print("Discord error:")
         print(discord_response.text)
         raise SystemExit(1)
 
-    print(
-        f"Sent: {title} | "
-        f"{discount}% OFF | "
-        f"{regular_price:.2f} {currency} -> "
-        f"{price:.2f} {currency}"
-    )
+    print()
+    print(f"Discord batch sent: {len(batch)} deals")
 
-    sent_deals.add(deal_key)
-    sent_now += 1
+    for item in batch:
+        sent_deals.add(item["deal_key"])
+        sent_now += 1
+        print(f"Sent: {item['title']}")
+
+    # Small pause between batches
+    time.sleep(1)
 
 
 # -------------------------
@@ -153,6 +192,7 @@ with open(HISTORY_FILE, "w", encoding="utf-8") as file:
         indent=2,
         ensure_ascii=False
     )
+
 
 print()
 print(f"Sent this run: {sent_now}")
