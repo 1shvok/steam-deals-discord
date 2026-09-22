@@ -17,6 +17,10 @@ HISTORY_FILE = "sent_deals.json"
 try:
     with open(HISTORY_FILE, "r", encoding="utf-8") as file:
         history = json.load(file)
+
+    if not isinstance(history, dict):
+        history = {}
+
 except (FileNotFoundError, json.JSONDecodeError):
     history = {}
 
