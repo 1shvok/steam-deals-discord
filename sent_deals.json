@@ -1,1 +1,266 @@
-[]
+{
+  "019f903e-2f86-705c-b8df-d589a44dcc9e": {
+    "title": "Gravitron",
+    "price": 0.49,
+    "regular_price": 9.8,
+    "discount": 95
+  },
+  "018d97b7-5ffc-72b3-a144-c41395dcaca9": {
+    "title": "Only Straight and Up!",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "0190e12e-4c2c-72b2-bce5-a35d1d83a36a": {
+    "title": "The Ritual",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-6ef1-73d9-ad41-390d2bd442cb": {
+    "title": "Crown Wars: The Black Prince",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "018e80db-21d3-72ed-85c1-7323dadaf242": {
+    "title": "Battlegrounds : The Pirate King",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d9809-bad7-712d-b9d2-2ec44a687dc0": {
+    "title": "The Tower Of Babel",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-3d3e-70c7-b0ce-ad839799eb07": {
+    "title": "Zack 2: Celestine's Map",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937e-fd9c-73db-acda-85a182211f37": {
+    "title": "Watch_Dogs® 2 Gold Edition",
+    "price": 3.99,
+    "regular_price": 79.99,
+    "discount": 95
+  },
+  "018d937f-17c5-712d-8e53-09484c343591": {
+    "title": "Watch_Dogs® 2 Deluxe Edition",
+    "price": 3.49,
+    "regular_price": 69.99,
+    "discount": 95
+  },
+  "018d937e-ff88-70fb-8ce4-9bda48f3048d": {
+    "title": "Watch_Dogs® 2",
+    "price": 2.99,
+    "regular_price": 59.99,
+    "discount": 95
+  },
+  "018d937f-4d35-7174-adf4-9a395fc51bd4": {
+    "title": "War Hospital",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "018d937f-3476-72c0-a610-b7228cb970e0": {
+    "title": "Warhammer: Chaosbane",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "018d937f-6c94-7096-b156-2a973822f0b3": {
+    "title": "TT Isle of Man: Ride on the Edge 3 Racing Fan Edition",
+    "price": 2.99,
+    "regular_price": 59.99,
+    "discount": 95
+  },
+  "018d937f-6c94-7096-b156-2a9737c31f01": {
+    "title": "TT Isle of Man: Ride on the Edge 3",
+    "price": 2.49,
+    "regular_price": 49.99,
+    "discount": 95
+  },
+  "018d97aa-5055-7073-85df-4231ab7de597": {
+    "title": "The Thief",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-1018-7053-bd38-d5cfb751b486": {
+    "title": "STEEP",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "018d937f-611a-7297-8ff8-57b25d271345": {
+    "title": "Spyer",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-4f00-7105-9eae-edfad43cb295": {
+    "title": "Rescuer",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d9988-b1a5-72f6-a7ea-6c480da7a873": {
+    "title": "The President",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-1221-72ed-951b-43ffdc2091e5": {
+    "title": "OVERPASS™",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "018d937f-5f05-7151-b0ac-6f1da1ced0f1": {
+    "title": "Obsessive revenge",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-64ad-72a7-916f-08e6b004c09b": {
+    "title": "Military Attack",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-5d83-73b4-b50e-e613dff5ee2e": {
+    "title": "Mars Rover Simulator",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-503d-724e-bb69-6fb6ec56150d": {
+    "title": "Last Generation: Survival",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-206a-72d6-9c0d-f7d5755997f7": {
+    "title": "The Killer",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d97af-3fee-73ab-bbac-d207830dd093": {
+    "title": "Hacker Man",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-2059-7142-a196-71af4a9678f5": {
+    "title": "Gimel Dimension",
+    "price": 0.49,
+    "regular_price": 9.8,
+    "discount": 95
+  },
+  "018d937f-6468-7292-859e-433ef40f283a": {
+    "title": "The Faction",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-6464-71ba-b7ad-4a0b1c0dceba": {
+    "title": "The Dragoness: Command the Flame",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-6cb8-7098-a346-6fb35b84d027": {
+    "title": "Decks Of Power",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-536a-70a2-86cb-19471216d688": {
+    "title": "Combatant",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-5543-71dc-add9-521bc20c801b": {
+    "title": "BattleGrounds : War, Tanks And Nukes",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-74ea-7231-88c2-428a751c0a24": {
+    "title": "Battlegrounds : At Enemy Gates",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937e-fd8e-737e-b27e-e89cf79e4ce4": {
+    "title": "Agents of Mayhem",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "018d937f-5f8d-72ec-83de-c554c0a90b77": {
+    "title": "Agent 01",
+    "price": 0.99,
+    "regular_price": 19.99,
+    "discount": 95
+  },
+  "018d937f-0159-718a-935c-700f04dfd7e4": {
+    "title": "Mugsters",
+    "price": 1.17,
+    "regular_price": 19.5,
+    "discount": 94
+  },
+  "018d937f-3e12-72c7-8109-ab468fabe2d4": {
+    "title": "Helheim Hassle",
+    "price": 1.17,
+    "regular_price": 19.5,
+    "discount": 94
+  },
+  "019f5c27-774c-71f3-b691-4b705e29cb2d": {
+    "title": "The Political Simulator",
+    "price": 0.94,
+    "regular_price": 13.49,
+    "discount": 93
+  },
+  "018d937f-60a8-7320-9f5b-6788a7db5411": {
+    "title": "Vampire: The Masquerade - Swansong PRIMOGEN Edition",
+    "price": 4.19,
+    "regular_price": 59.99,
+    "discount": 93
+  },
+  "018d937f-47cc-7291-8feb-1d56b3f996d7": {
+    "title": "Vampire: The Masquerade - Swansong",
+    "price": 3.49,
+    "regular_price": 49.99,
+    "discount": 93
+  },
+  "018d937f-1aec-7102-83f9-35f468f6cc40": {
+    "title": "Styx: Shards of Darkness",
+    "price": 1.39,
+    "regular_price": 19.99,
+    "discount": 93
+  },
+  "018d937f-6b7d-7382-9685-8ec6d928089e": {
+    "title": "Star Hive: The Menace",
+    "price": 1.1,
+    "regular_price": 15.79,
+    "discount": 93
+  },
+  "018d937f-47f6-724a-9719-3e72bccb1dbe": {
+    "title": "Shiro",
+    "price": 0.89,
+    "regular_price": 12.79,
+    "discount": 93
+  },
+  "01988c20-fd4b-717e-9a26-b9c7f117376a": {
+    "title": "✈️Velocity Wings✈️",
+    "price": 0.58,
+    "regular_price": 8.33,
+    "discount": 93
+  }
+}
