@@ -3,6 +3,9 @@ name: Test ITAD Discord
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -24,3 +27,17 @@ jobs:
           ITAD_API_KEY: ${{ secrets.ITAD_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python itad_test.py
+
+      - name: Save deal history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add sent_deals.json
+
+          if git diff --cached --quiet; then
+            echo "No history changes to commit."
+          else
+            git commit -m "Update deal history"
+            git push
+          fi
