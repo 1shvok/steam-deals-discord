@@ -128,24 +128,24 @@ for item in new_deals:
     currency = deal_info["price"]["currency"]
     url = deal_info["url"]
 
- assets = deal.get("assets", {})
-boxart_url = assets.get("boxart")
+    assets = deal.get("assets", {})
+    boxart_url = assets.get("boxart")
 
-embed = {
-    "title": f"{discount}% OFF — {title}",
-    "description": (
-        f"~~{regular_price:.2f} {currency}~~ → "
-        f"**{price:.2f} {currency}**"
-    ),
-    "url": url,
-    "color": 5763719,
-    "thumbnail": {
-        "url": boxart_url
-    } if boxart_url else None,
-    "footer": {
-        "text": "Steam deal • IsThereAnyDeal"
+    embed = {
+        "title": f"{discount}% OFF — {title}",
+        "description": (
+            f"~~{regular_price:.2f} {currency}~~ → "
+            f"**{price:.2f} {currency}**"
+        ),
+        "url": url,
+        "color": 5763719,
+        "thumbnail": {
+            "url": boxart_url
+        } if boxart_url else None,
+        "footer": {
+            "text": "Steam deal • IsThereAnyDeal"
+        }
     }
-}
 
     embeds.append(embed)
 
