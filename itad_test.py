@@ -129,7 +129,7 @@ for item in new_deals:
     url = deal_info["url"]
 
     assets = deal.get("assets", {})
-    banner_url = assets.get("banner300")
+    banner_url = assets.get("banner600")
 
     history_low = deal_info.get("historyLow", {})
     history_low_price = history_low.get("amount")
