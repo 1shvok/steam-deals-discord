@@ -129,19 +129,32 @@ for item in new_deals:
     url = deal_info["url"]
 
     assets = deal.get("assets", {})
-    boxart_url = assets.get("boxart")
+    banner_url = assets.get("banner300")
+
+    history_low = deal_info.get("historyLow", {})
+    history_low_price = history_low.get("amount")
+
+    expiry = deal_info.get("expiry")
+
+    if expiry:
+        expiry = expiry.replace("T", " ")[:16]
+
+    description = (
+        f"~~{regular_price:.2f} {currency}~~ → "
+        f"**{price:.2f} {currency}**\n\n"
+        f"📉 **History Low:** "
+        f"{history_low_price:.2f} {currency}\n"
+        f"⏰ **Sale Ends:** {expiry or 'Unknown'}"
+    )
 
     embed = {
         "title": f"{discount}% OFF — {title}",
-        "description": (
-            f"~~{regular_price:.2f} {currency}~~ → "
-            f"**{price:.2f} {currency}**"
-        ),
+        "description": description,
         "url": url,
         "color": 5763719,
-        "thumbnail": {
-            "url": boxart_url
-        } if boxart_url else None,
+        "image": {
+            "url": banner_url
+        } if banner_url else None,
         "footer": {
             "text": "Steam deal • IsThereAnyDeal"
         }
