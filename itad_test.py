@@ -111,6 +111,74 @@ print(f"New or changed deals: {len(new_deals)}")
 
 
 # -------------------------
+# Get Steam game metadata
+# -------------------------
+
+import re
+
+
+def get_steam_metadata(itad_url):
+
+    try:
+        steam_page = requests.get(
+            itad_url,
+            timeout=15,
+            allow_redirects=True
+        )
+
+        match = re.search(
+            r"store\.steampowered\.com/app/(\d+)",
+            steam_page.url
+        )
+
+        if not match:
+            return None
+
+        app_id = match.group(1)
+
+        steam_response = requests.get(
+            "https://store.steampowered.com/api/appdetails",
+            params={
+                "appids": app_id,
+                "l": "english",
+                "cc": "pt"
+            },
+            timeout=15
+        )
+
+        if steam_response.status_code != 200:
+            return None
+
+        steam_data = steam_response.json()
+        app_data = steam_data.get(app_id, {})
+
+        if not app_data.get("success"):
+            return None
+
+        game_data = app_data.get("data", {})
+
+        description = game_data.get("short_description", "")
+
+        genres = [
+            genre["description"]
+            for genre in game_data.get("genres", [])
+            if "description" in genre
+        ]
+
+        return {
+            "description": description,
+            "genres": genres
+        }
+
+    except Exception as error:
+
+        print(
+            f"Steam metadata error: {error}"
+        )
+
+        return None
+
+# -------------------------
 # Create Discord embeds
 # -------------------------
 
@@ -139,16 +207,82 @@ for item in new_deals:
     if expiry:
         expiry = expiry.replace("T", " ")[:16]
 
-    description = (
-        f"~~{regular_price:.2f} {currency}~~ → "
-        f"**{price:.2f} {currency}**\n\n"
-        f"📉 **History Low:** "
-        f"{history_low_price:.2f} {currency}\n"
-        f"⏰ **Sale Ends:** {expiry or 'Unknown'}"
+    # -------------------------
+    # Get Steam metadata
+    # -------------------------
+
+    steam_metadata = get_steam_metadata(url)
+
+    game_description = ""
+    genres = []
+
+    if steam_metadata:
+
+        game_description = (
+            steam_metadata.get("description") or ""
+        )
+
+        genres = steam_metadata.get(
+            "genres",
+            []
+        )
+
+    # -------------------------
+    # Build description
+    # -------------------------
+
+    description_parts = []
+
+    description_parts.append(
+        f"**🔥 {discount}% OFF**"
     )
 
+    description_parts.append(
+        f"**~~{regular_price:.2f} {currency}~~ "
+        f"→ {price:.2f} {currency}**"
+    )
+
+    description_parts.append(
+        f"📉 **History Low:** "
+        f"{history_low_price:.2f} {currency}"
+        if history_low_price is not None
+        else
+        "📉 **History Low:** Unknown"
+    )
+
+    description_parts.append(
+        f"⏰ **Sale Ends:** "
+        f"{expiry or 'Unknown'}"
+    )
+
+    if genres:
+
+        genre_text = " • ".join(genres)
+
+        description_parts.append(
+            f"🎮 **Genres:** {genre_text}"
+        )
+
+    if game_description:
+
+        description_parts.append(
+            f"*{game_description}*"
+        )
+
+    description_parts.append(
+        f"[**🔗 View on Steam →**]({url})"
+    )
+
+    description = "\n\n".join(
+        description_parts
+    )
+
+    # -------------------------
+    # Create embed
+    # -------------------------
+
     embed = {
-        "title": f"{discount}% OFF — {title}",
+        "title": title,
         "description": description,
         "url": url,
         "color": 5763719,
