@@ -232,5 +232,11 @@
     "price": 1.75,
     "regular_price": 19.5,
     "discount": 91
+  },
+  "018d937f-0124-7094-b2f3-0ce8f326c06f": {
+    "title": "Thief Simulator VR",
+    "price": 1.51,
+    "regular_price": 16.79,
+    "discount": 91
   }
 }
