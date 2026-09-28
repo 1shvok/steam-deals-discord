@@ -2,6 +2,8 @@ import json
 import os
 import time
 import requests
+import re
+import html
 
 API_KEY = os.environ["ITAD_API_KEY"]
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
@@ -114,9 +116,6 @@ print(f"New or changed deals: {len(new_deals)}")
 # Get Steam game metadata
 # -------------------------
 
-import re
-
-
 def get_steam_metadata(itad_url):
 
     try:
@@ -159,22 +158,34 @@ def get_steam_metadata(itad_url):
 
         description = game_data.get("short_description", "")
 
+        # Remove HTML and clean up the description
+        description = re.sub(
+            r"<[^>]+>",
+            "",
+            description
+        )
+
+        description = html.unescape(description)
+
         genres = [
             genre["description"]
             for genre in game_data.get("genres", [])
             if "description" in genre
         ]
 
+        # Metacritic rating, when available
+        metacritic = game_data.get("metacritic", {})
+        rating = metacritic.get("score")
+
         return {
             "description": description,
-            "genres": genres
+            "genres": genres,
+            "rating": rating
         }
 
     except Exception as error:
 
-        print(
-            f"Steam metadata error: {error}"
-        )
+        print(f"Steam metadata error: {error}")
 
         return None
 
@@ -197,6 +208,8 @@ for item in new_deals:
     url = deal_info["url"]
 
     assets = deal.get("assets", {})
+
+    # Large banner at the bottom of the embed
     banner_url = assets.get("banner600")
 
     history_low = deal_info.get("historyLow", {})
@@ -215,6 +228,7 @@ for item in new_deals:
 
     game_description = ""
     genres = []
+    rating = None
 
     if steam_metadata:
 
@@ -222,60 +236,74 @@ for item in new_deals:
             steam_metadata.get("description") or ""
         )
 
-        genres = steam_metadata.get(
-            "genres",
-            []
-        )
+        genres = steam_metadata.get("genres", [])
+        rating = steam_metadata.get("rating")
 
     # -------------------------
-    # Build description
+    # Genres as compact tags
+    # -------------------------
+
+    genre_text = "  ".join(
+        f"`{genre}`"
+        for genre in genres
+    )
+
+    # -------------------------
+    # Main description
     # -------------------------
 
     description_parts = []
 
-    description_parts.append(
-        f"**🔥 {discount}% OFF**"
-    )
-
-    description_parts.append(
-        f"**~~{regular_price:.2f} {currency}~~ "
-        f"→ {price:.2f} {currency}**"
-    )
-
-    description_parts.append(
-        f"📉 **History Low:** "
-        f"{history_low_price:.2f} {currency}"
-        if history_low_price is not None
-        else
-        "📉 **History Low:** Unknown"
-    )
-
-    description_parts.append(
-        f"⏰ **Sale Ends:** "
-        f"{expiry or 'Unknown'}"
-    )
-
-    if genres:
-
-        genre_text = " • ".join(genres)
-
-        description_parts.append(
-            f"🎮 **Genres:** {genre_text}"
-        )
-
+    # Game description immediately below the title
     if game_description:
-
         description_parts.append(
-            f"*{game_description}*"
+            f"*{game_description[:700]}*"
         )
 
     description_parts.append(
-        f"[**🔗 View on Steam →**]({url})"
+        f"**{discount}% OFF**"
     )
 
-    description = "\n\n".join(
-        description_parts
+    description_parts.append(
+        f"~~{regular_price:.2f} {currency}~~  →  **{price:.2f} {currency}**"
     )
+
+    if genre_text:
+        description_parts.append(genre_text)
+
+    description_parts.append(
+        f"[**View on Steam →**]({url})"
+    )
+
+    description = "\n\n".join(description_parts)
+
+    # -------------------------
+    # Embed fields
+    # -------------------------
+
+    fields = []
+
+    if history_low_price is not None:
+
+        fields.append({
+            "name": "History Low",
+            "value": f"{history_low_price:.2f} {currency}",
+            "inline": True
+        })
+
+    fields.append({
+        "name": "Sale Ends",
+        "value": f"**{expiry or 'Unknown'}**",
+        "inline": True
+    })
+
+    if rating is not None:
+
+        fields.append({
+            "name": "Metacritic",
+            "value": f"**{rating}/100**",
+            "inline": True
+        })
 
     # -------------------------
     # Create embed
@@ -286,8 +314,9 @@ for item in new_deals:
         "description": description,
         "url": url,
         "color": 5763719,
+        "fields": fields,
         "image": {
-            "url": banner_url
+        "url": banner_url
         } if banner_url else None,
         "footer": {
             "text": "Steam deal • IsThereAnyDeal"
@@ -295,7 +324,6 @@ for item in new_deals:
     }
 
     embeds.append(embed)
-
 
 # -------------------------
 # Nothing new
