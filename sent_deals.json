@@ -226,5 +226,77 @@
     "price": 1.51,
     "regular_price": 16.79,
     "discount": 91
+  },
+  "018d937f-342f-704f-b8d9-0813d7209d96": {
+    "title": "Thief Simulator",
+    "price": 1.75,
+    "regular_price": 19.5,
+    "discount": 91
+  },
+  "018d937f-4e52-713f-a63b-9b9ea6e06431": {
+    "title": "Firefighting : Into The Flames",
+    "price": 1.51,
+    "regular_price": 16.79,
+    "discount": 91
+  },
+  "018d937f-1735-71dc-aa95-459cf5167770": {
+    "title": "Farm Manager 2018",
+    "price": 1.75,
+    "regular_price": 19.49,
+    "discount": 91
+  },
+  "018d937f-6b89-7082-bc5f-03ab24a40228": {
+    "title": "The Devilry Reservation",
+    "price": 0.89,
+    "regular_price": 9.99,
+    "discount": 91
+  },
+  "018d937e-ea4c-73d2-ac68-0c0e86fe1d45": {
+    "title": "Cat Interstellar",
+    "price": 0.87,
+    "regular_price": 9.75,
+    "discount": 91
+  },
+  "018d937f-47c6-7390-a9c2-35afb3e42c89": {
+    "title": "Going Under Deluxe Edition",
+    "price": 2.49,
+    "regular_price": 24.99,
+    "discount": 90
+  },
+  "019ba7bc-24c3-710a-a8da-67c796139520": {
+    "title": "Cybro",
+    "price": 0.91,
+    "regular_price": 9.19,
+    "discount": 90
+  },
+  "018d937f-5c55-7367-b4bd-b81c83d21eb3": {
+    "title": "Riders Republic Deluxe Edition",
+    "price": 5.99,
+    "regular_price": 59.99,
+    "discount": 90
+  },
+  "018d937f-4683-709c-9595-78900f5eef88": {
+    "title": "Space Avengers",
+    "price": 1.02,
+    "regular_price": 10.25,
+    "discount": 90
+  },
+  "018d937f-74db-7395-982a-4d6235be4ede": {
+    "title": "Spleef Game",
+    "price": 1.02,
+    "regular_price": 10.25,
+    "discount": 90
+  },
+  "019c52a2-e855-73b1-9748-7407b2bc1d1c": {
+    "title": "SURVIVAL",
+    "price": 0.97,
+    "regular_price": 9.75,
+    "discount": 90
+  },
+  "019c2480-6dd5-7319-a1e5-9d4960fce9c3": {
+    "title": "Tom Clancy's The Division - Definitive Edition",
+    "price": 4.99,
+    "regular_price": 49.99,
+    "discount": 90
   }
 }
