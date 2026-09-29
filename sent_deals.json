@@ -316,5 +316,11 @@
     "price": 0.97,
     "regular_price": 9.75,
     "discount": 90
+  },
+  "018d937f-6362-71b5-b592-6ce749e95167": {
+    "title": "The Siege and the Sandfox",
+    "price": 1.49,
+    "regular_price": 14.99,
+    "discount": 90
   }
 }
