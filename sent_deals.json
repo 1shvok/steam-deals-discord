@@ -298,5 +298,23 @@
     "price": 4.99,
     "regular_price": 49.99,
     "discount": 90
+  },
+  "019abc65-e0a8-70ab-953d-a223fe28449b": {
+    "title": "After the Crash : Colony",
+    "price": 0.71,
+    "regular_price": 7.19,
+    "discount": 90
+  },
+  "0196cdd1-c033-7290-ae7f-c5204b45d9fb": {
+    "title": "Quiz Kingdom: Elementary Math Kids RPG",
+    "price": 1.74,
+    "regular_price": 17.49,
+    "discount": 90
+  },
+  "019794b8-0b8f-7151-bfe9-80be5a592222": {
+    "title": "Tower Survivor",
+    "price": 0.97,
+    "regular_price": 9.75,
+    "discount": 90
   }
 }
