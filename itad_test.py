@@ -373,9 +373,14 @@ for item in new_deals:
     if genre_text:
         description_parts.append(genre_text)
 
-    description_parts.append(
-        f"[**View on Steam →**]({url})"
-    )
+    app_id = steam_metadata.get("app_id") if steam_metadata else None
+    steam_client_url = f"steam://store/{app_id}" if app_id else None
+
+    links = [f"[**View in browser →**]({url})"]
+    if steam_client_url:
+        links.append(f"[**View in Steam →**]({steam_client_url})")
+
+    description_parts.append("  ·  ".join(links))
 
     description = "\n\n".join(description_parts)
 
@@ -383,24 +388,21 @@ for item in new_deals:
     # Embed fields
     # -------------------------
 
-    # Keep the key deal metrics together in one inline row.
-    fields = [
-        {
-            "name": "Discount",
-            "value": f"**{discount}% OFF**",
-            "inline": True
-        },
-        {
-            "name": "Price",
-            "value": f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**",
-            "inline": True
-        }
-    ]
+    # Deal details on the left, Steam review summary on the right.
+    deal_value = (
+        f"**{discount}% OFF**  ·  "
+        f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**"
+    )
+    fields = [{
+        "name": "Discount · Price",
+        "value": deal_value,
+        "inline": True
+    }]
 
     if review_score_desc and total_reviews:
         fields.append({
             "name": "Steam Reviews",
-            "value": f"**{review_score_desc}** · ` {total_reviews:,} reviews `",
+            "value": f"**{review_score_desc}** · `{total_reviews:,} reviews`",
             "inline": True
         })
 
