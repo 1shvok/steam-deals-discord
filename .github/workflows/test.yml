@@ -22,8 +22,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install requests
-        run: pip install requests
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
 
       - name: Run Steam Deals
         env:
