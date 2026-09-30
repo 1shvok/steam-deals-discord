@@ -388,16 +388,19 @@ for item in new_deals:
     # Embed fields
     # -------------------------
 
-    # Deal details on the left, Steam review summary on the right.
-    deal_value = (
-        f"**{discount}% OFF**  ·  "
-        f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**"
-    )
-    fields = [{
-        "name": "Discount · Price",
-        "value": deal_value,
-        "inline": True
-    }]
+    # Keep discount and price as separate fields; place reviews immediately after them.
+    fields = [
+        {
+            "name": "Discount",
+            "value": f"**{discount}% OFF**",
+            "inline": True
+        },
+        {
+            "name": "Price",
+            "value": f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**",
+            "inline": True
+        }
+    ]
 
     if review_score_desc and total_reviews:
         fields.append({
