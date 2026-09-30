@@ -135,6 +135,7 @@ def get_steam_metadata(itad_url):
 
         app_id = match.group(1)
 
+        # Get app details from Steam
         steam_response = requests.get(
             "https://store.steampowered.com/api/appdetails",
             params={
@@ -156,15 +157,10 @@ def get_steam_metadata(itad_url):
 
         game_data = app_data.get("data", {})
 
+        app_type = game_data.get("type", "")
+
         description = game_data.get("short_description", "")
-
-        # Remove HTML and clean up the description
-        description = re.sub(
-            r"<[^>]+>",
-            "",
-            description
-        )
-
+        description = re.sub(r"<[^>]+>", "", description)
         description = html.unescape(description)
 
         genres = [
@@ -173,14 +169,65 @@ def get_steam_metadata(itad_url):
             if "description" in genre
         ]
 
-        # Metacritic rating, when available
-        metacritic = game_data.get("metacritic", {})
-        rating = metacritic.get("score")
+        # Check English subtitles on the Steam store page
+        from bs4 import BeautifulSoup
+
+        store_response = requests.get(
+            f"https://store.steampowered.com/app/{app_id}/",
+            params={
+                "l": "english",
+                "cc": "pt"
+            },
+            timeout=15
+        )
+
+        english_subtitles = False
+
+        if store_response.status_code == 200:
+
+            soup = BeautifulSoup(
+                store_response.text,
+                "html.parser"
+            )
+
+            language_table = soup.select_one(
+                "table.game_language_options"
+            )
+
+            if language_table:
+
+                for row in language_table.select("tr"):
+
+                    cells = row.find_all("td")
+
+                    if len(cells) < 4:
+                        continue
+
+                    language = cells[0].get_text(
+                        " ",
+                        strip=True
+                    )
+
+                    subtitles_cell = cells[3]
+
+                    subtitles_text = subtitles_cell.get_text(
+                        " ",
+                        strip=True
+                    )
+
+                    if (
+                        language.lower().startswith("english")
+                        and subtitles_text
+                    ):
+                        english_subtitles = True
+                        break
 
         return {
+            "type": app_type,
             "description": description,
             "genres": genres,
-            "rating": rating
+            "rating": None,
+            "english_subtitles": english_subtitles
         }
 
     except Exception as error:
@@ -188,6 +235,47 @@ def get_steam_metadata(itad_url):
         print(f"Steam metadata error: {error}")
 
         return None
+
+# -------------------------
+# Filter using Steam metadata
+# -------------------------
+
+eligible_deals = []
+
+for item in new_deals:
+
+    deal = item["deal"]
+    url = deal["deal"]["url"]
+
+    metadata = get_steam_metadata(url)
+
+    if not metadata:
+        print(f"SKIPPED: Could not get Steam data: {deal['title']}")
+        continue
+
+    if metadata.get("type") != "game":
+        print(
+            f"SKIPPED: Not a full game: "
+            f"{deal['title']} ({metadata.get('type')})"
+        )
+        continue
+
+    if not metadata.get("english_subtitles"):
+        print(
+            f"SKIPPED: No confirmed English subtitles: "
+            f"{deal['title']}"
+        )
+        continue
+
+    item["steam_metadata"] = metadata
+    eligible_deals.append(item)
+
+print(
+    f"Eligible games with English subtitles: "
+    f"{len(eligible_deals)}"
+)
+
+new_deals = eligible_deals
 
 # -------------------------
 # Create Discord embeds
@@ -224,7 +312,7 @@ for item in new_deals:
     # Get Steam metadata
     # -------------------------
 
-    steam_metadata = get_steam_metadata(url)
+    steam_metadata = item["steam_metadata"]
 
     game_description = ""
     genres = []
