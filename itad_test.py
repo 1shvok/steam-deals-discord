@@ -370,14 +370,6 @@ for item in new_deals:
             f"*{game_description[:700]}*"
         )
 
-    description_parts.append(
-        f"**{discount}% OFF**"
-    )
-
-    description_parts.append(
-        f"~~{regular_price:.2f} {currency}~~  →  **{price:.2f} {currency}**"
-    )
-
     if genre_text:
         description_parts.append(genre_text)
 
@@ -391,7 +383,26 @@ for item in new_deals:
     # Embed fields
     # -------------------------
 
-    fields = []
+    # Keep the key deal metrics together in one inline row.
+    fields = [
+        {
+            "name": "Discount",
+            "value": f"**{discount}% OFF**",
+            "inline": True
+        },
+        {
+            "name": "Price",
+            "value": f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**",
+            "inline": True
+        }
+    ]
+
+    if review_score_desc and total_reviews:
+        fields.append({
+            "name": "Steam Reviews",
+            "value": f"**{review_score_desc}** · ` {total_reviews:,} reviews `",
+            "inline": True
+        })
 
     if history_low_price is not None:
 
@@ -406,16 +417,6 @@ for item in new_deals:
         "value": f"**{expiry or 'Unknown'}**",
         "inline": True
     })
-
-    if review_score_desc and total_reviews:
-        fields.append({
-            "name": "Steam Reviews",
-            "value": (
-                f"**{review_score_desc}**\\n"
-                f"{total_reviews:,} reviews"
-            ),
-            "inline": True
-        })
 
     # -------------------------
     # Create embed
