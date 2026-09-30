@@ -4,6 +4,7 @@ import time
 import requests
 import re
 import html
+from bs4 import BeautifulSoup
 
 API_KEY = os.environ["ITAD_API_KEY"]
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
@@ -169,65 +170,33 @@ def get_steam_metadata(itad_url):
             if "description" in genre
         ]
 
-        # Check English subtitles on the Steam store page
-        from bs4 import BeautifulSoup
+        # -------------------------
+        # Check English language support
+        # -------------------------
 
-        store_response = requests.get(
-            f"https://store.steampowered.com/app/{app_id}/",
-            params={
-                "l": "english",
-                "cc": "pt"
-            },
-            timeout=15
+        supported_languages = game_data.get(
+            "supported_languages",
+            ""
         )
 
-        english_subtitles = False
+        language_text = BeautifulSoup(
+            supported_languages,
+            "html.parser"
+        ).get_text(" ", strip=True)
 
-        if store_response.status_code == 200:
-
-            soup = BeautifulSoup(
-                store_response.text,
-                "html.parser"
-            )
-
-            language_table = soup.select_one(
-                "table.game_language_options"
-            )
-
-            if language_table:
-
-                for row in language_table.select("tr"):
-
-                    cells = row.find_all("td")
-
-                    if len(cells) < 4:
-                        continue
-
-                    language = cells[0].get_text(
-                        " ",
-                        strip=True
-                    )
-
-                    subtitles_cell = cells[3]
-
-                    subtitles_text = subtitles_cell.get_text(
-                        " ",
-                        strip=True
-                    )
-
-                    if (
-                        language.lower().startswith("english")
-                        and subtitles_text
-                    ):
-                        english_subtitles = True
-                        break
+        # Steam lists a language when the game supports it in some form.
+        # The API text does not reliably separate interface/subtitles/audio.
+        english_supported = bool(
+            re.search(r"\bEnglish\b", language_text, re.IGNORECASE)
+        )
 
         return {
             "type": app_type,
             "description": description,
             "genres": genres,
             "rating": None,
-            "english_subtitles": english_subtitles
+            "english_supported": english_supported,
+            "app_id": app_id
         }
 
     except Exception as error:
@@ -235,6 +204,25 @@ def get_steam_metadata(itad_url):
         print(f"Steam metadata error: {error}")
 
         return None
+
+# -------------------------
+# Filter special editions
+# -------------------------
+
+import re
+
+EDITION_PATTERN = re.compile(
+    r"\b("
+    r"gold|premium|deluxe|ultimate|"
+    r"complete|collector'?s|definitive|"
+    r"anniversary|special|limited|"
+    r"game of the year|goty"
+    r")\s+edition\b",
+    re.IGNORECASE
+)
+
+def is_special_edition(title):
+    return bool(EDITION_PATTERN.search(title))
 
 # -------------------------
 # Filter using Steam metadata
@@ -246,6 +234,10 @@ for item in new_deals:
 
     deal = item["deal"]
     url = deal["deal"]["url"]
+
+    if is_special_edition(deal["title"]):
+    print(f"SKIPPED: Special edition: {deal['title']}")
+    continue
 
     metadata = get_steam_metadata(url)
 
@@ -260,9 +252,9 @@ for item in new_deals:
         )
         continue
 
-    if not metadata.get("english_subtitles"):
+    if not metadata.get("english_supported"):
         print(
-            f"SKIPPED: No confirmed English subtitles: "
+            f"SKIPPED: No English language support listed: "
             f"{deal['title']}"
         )
         continue
