@@ -190,11 +190,39 @@ def get_steam_metadata(itad_url):
             re.search(r"\bEnglish\b", language_text, re.IGNORECASE)
         )
 
+        # Get Steam's aggregate user review score and review count.
+        # Reviews are optional: a failure here must not block the deal.
+        review_score_desc = None
+        total_reviews = 0
+
+        try:
+            reviews_response = requests.get(
+                f"https://store.steampowered.com/appreviews/{app_id}",
+                params={
+                    "json": 1,
+                    "language": "all",
+                    "filter": "all",
+                    "review_type": "all",
+                    "num_per_page": 1
+                },
+                timeout=15
+            )
+
+            if reviews_response.status_code == 200:
+                reviews_data = reviews_response.json()
+                query_summary = reviews_data.get("query_summary", {})
+                review_score_desc = query_summary.get("review_score_desc")
+                total_reviews = query_summary.get("total_reviews", 0)
+
+        except Exception as error:
+            print(f"Steam reviews error for app {app_id}: {error}")
+
         return {
             "type": app_type,
             "description": description,
             "genres": genres,
-            "rating": None,
+            "review_score_desc": review_score_desc,
+            "total_reviews": total_reviews,
             "english_supported": english_supported,
             "app_id": app_id
         }
@@ -236,8 +264,8 @@ for item in new_deals:
     url = deal["deal"]["url"]
 
     if is_special_edition(deal["title"]):
-    print(f"SKIPPED: Special edition: {deal['title']}")
-    continue
+        print(f"SKIPPED: Special edition: {deal['title']}")
+        continue
 
     metadata = get_steam_metadata(url)
 
@@ -308,7 +336,8 @@ for item in new_deals:
 
     game_description = ""
     genres = []
-    rating = None
+    review_score_desc = None
+    total_reviews = 0
 
     if steam_metadata:
 
@@ -317,7 +346,8 @@ for item in new_deals:
         )
 
         genres = steam_metadata.get("genres", [])
-        rating = steam_metadata.get("rating")
+        review_score_desc = steam_metadata.get("review_score_desc")
+        total_reviews = steam_metadata.get("total_reviews", 0)
 
     # -------------------------
     # Genres as compact tags
@@ -377,11 +407,13 @@ for item in new_deals:
         "inline": True
     })
 
-    if rating is not None:
-
+    if review_score_desc and total_reviews:
         fields.append({
-            "name": "Metacritic",
-            "value": f"**{rating}/100**",
+            "name": "Steam Reviews",
+            "value": (
+                f"**{review_score_desc}**\\n"
+                f"{total_reviews:,} reviews"
+            ),
             "inline": True
         })
 
