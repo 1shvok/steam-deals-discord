@@ -454,27 +454,72 @@ if not embeds:
 
 
 # -------------------------
-# Send embeds in batches
+# Send embeds in safe batches
 # -------------------------
 
-BATCH_SIZE = 10
-
-total_batches = (
-    len(embeds) + BATCH_SIZE - 1
-) // BATCH_SIZE
-
-print(f"Discord batches: {total_batches}")
+MAX_EMBEDS_PER_MESSAGE = 10
+MAX_MESSAGE_CHARS = 5500  # запас до лимита Discord в 6000 символов
 
 
-for batch_number, start in enumerate(
-    range(0, len(embeds), BATCH_SIZE),
-    start=1
-):
+def get_embed_text_length(embed):
+    """Count text characters that contribute to Discord's embed limit."""
+    total = len(embed.get("title") or "")
+    total += len(embed.get("description") or "")
 
-    batch = embeds[start:start + BATCH_SIZE]
+    for field in embed.get("fields", []):
+        total += len(field.get("name") or "")
+        total += len(field.get("value") or "")
+
+    footer = embed.get("footer") or {}
+    total += len(footer.get("text") or "")
+
+    author = embed.get("author") or {}
+    total += len(author.get("name") or "")
+
+    return total
+
+
+# Each entry keeps the embed together with its corresponding deal.
+batches = []
+current_batch = []
+current_chars = 0
+
+for item, embed in zip(new_deals, embeds):
+    embed_chars = get_embed_text_length(embed)
+
+    # A single embed must fit by itself.
+    if embed_chars > MAX_MESSAGE_CHARS:
+        print(
+            f"SKIPPED: Embed is too large ({embed_chars} characters): "
+            f"{item['deal']['title']}"
+        )
+        continue
+
+    would_exceed_limit = (
+        current_chars + embed_chars > MAX_MESSAGE_CHARS
+        or len(current_batch) >= MAX_EMBEDS_PER_MESSAGE
+    )
+
+    if current_batch and would_exceed_limit:
+        batches.append(current_batch)
+        current_batch = []
+        current_chars = 0
+
+    current_batch.append((item, embed))
+    current_chars += embed_chars
+
+if current_batch:
+    batches.append(current_batch)
+
+print(f"Discord batches: {len(batches)}")
+
+
+for batch_number, batch_items in enumerate(batches, start=1):
+
+    batch_embeds = [embed for item, embed in batch_items]
 
     payload = {
-        "embeds": batch
+        "embeds": batch_embeds
     }
 
     while True:
@@ -488,8 +533,8 @@ for batch_number, start in enumerate(
         if discord_response.status_code in (200, 204):
 
             print(
-                f"Batch {batch_number}/{total_batches} "
-                f"sent successfully ({len(batch)} deals)."
+                f"Batch {batch_number}/{len(batches)} "
+                f"sent successfully ({len(batch_embeds)} deals)."
             )
 
             break
@@ -510,25 +555,15 @@ for batch_number, start in enumerate(
             )
 
             time.sleep(retry_after + 0.2)
-
             continue
 
         print("Discord error:")
         print(discord_response.text)
         raise SystemExit(1)
 
-    # --------------------------------
-    # Save history ONLY after success
-    # --------------------------------
-
-    batch_start = start
-    batch_end = start + len(batch)
-
-    for item in new_deals[batch_start:batch_end]:
-
-        deal = item["deal"]
-        deal_id = str(deal["id"])
-
+    # Save only deals from this successfully sent batch.
+    for item, embed in batch_items:
+        deal_id = str(item["deal"]["id"])
         history[deal_id] = item["state"]
 
     with open(
@@ -536,7 +571,6 @@ for batch_number, start in enumerate(
         "w",
         encoding="utf-8"
     ) as file:
-
         json.dump(
             history,
             file,
