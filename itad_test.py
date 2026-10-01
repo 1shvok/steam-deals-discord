@@ -197,7 +197,7 @@ def get_steam_metadata(itad_url):
         review_score_desc = None
         total_reviews = 0
 
-        try:
+                try:
             reviews_response = requests.get(
                 f"https://store.steampowered.com/appreviews/{app_id}",
                 params={
@@ -211,13 +211,46 @@ def get_steam_metadata(itad_url):
             )
 
             if reviews_response.status_code == 200:
-                reviews_data = reviews_response.json()
-                query_summary = reviews_data.get("query_summary", {})
-                review_score_desc = query_summary.get("review_score_desc")
-                total_reviews = query_summary.get("total_reviews", 0)
+                try:
+                    reviews_data = reviews_response.json()
+                except ValueError:
+                    print(
+                        f"Steam reviews error for {app_id}: "
+                        "Invalid JSON response"
+                    )
+                else:
+                    query_summary = reviews_data.get("query_summary")
 
-        except Exception as error:
-            print(f"Steam reviews error for app {app_id}: {error}")
+                    if query_summary:
+                        review_score_desc = query_summary.get(
+                            "review_score_desc"
+                        )
+                        total_reviews = query_summary.get(
+                            "total_reviews", 0
+                        )
+
+                        if not review_score_desc or not total_reviews:
+                            print(
+                                f"Steam reviews: no aggregate rating "
+                                f"for app {app_id}"
+                            )
+                    else:
+                        print(
+                            f"Steam reviews error for {app_id}: "
+                            "query_summary missing"
+                        )
+
+            else:
+                print(
+                    f"Steam reviews error for {app_id}: "
+                    f"HTTP {reviews_response.status_code} — "
+                    f"{reviews_response.text[:300]}"
+                )
+
+        except requests.RequestException as error:
+            print(
+                f"Steam reviews request failed for {app_id}: {error}"
+            )
 
         return {
             "type": app_type,
@@ -291,9 +324,6 @@ for item in new_deals:
         continue
 
     item["steam_metadata"] = metadata
-    # Use Steam header image if ITAD has no banner
-    if not banner_url and steam_metadata:
-        banner_url = steam_metadata.get("header_image")
     eligible_deals.append(item)
 
 print(
@@ -339,6 +369,9 @@ for item in new_deals:
     # -------------------------
 
     steam_metadata = item["steam_metadata"]
+    # Use Steam header image if ITAD has no banner
+    if not banner_url and steam_metadata:
+        banner_url = steam_metadata.get("header_image")
 
     game_description = ""
     genres = []
