@@ -370,9 +370,28 @@ for item in new_deals:
             f"*{game_description[:700]}*"
         )
 
+    # Discount on its own line, as in the original design
+    description_parts.append(
+        f"**{discount}% OFF**"
+    )
+
+    # Price and Steam reviews on the same line
+    price_line = (
+        f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**"
+    )
+
+    if review_score_desc and total_reviews:
+        price_line += (
+            f"  ·  **{review_score_desc}** · `{total_reviews:,} reviews`"
+        )
+
+    description_parts.append(price_line)
+
+    # Genres as compact tags
     if genre_text:
         description_parts.append(genre_text)
 
+    # Use a normal HTTPS Steam link
     app_id = steam_metadata.get("app_id") if steam_metadata else None
 
     if app_id:
@@ -391,18 +410,7 @@ for item in new_deals:
     # -------------------------
 
     # Keep discount and price as separate fields; place reviews immediately after them.
-    fields = [
-        {
-            "name": "Discount",
-            "value": f"**{discount}% OFF**",
-            "inline": True
-        },
-        {
-            "name": "Price",
-            "value": f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**",
-            "inline": True
-        }
-    ]
+    fields = []
 
     if review_score_desc and total_reviews:
         fields.append({
