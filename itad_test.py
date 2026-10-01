@@ -374,13 +374,15 @@ for item in new_deals:
         description_parts.append(genre_text)
 
     app_id = steam_metadata.get("app_id") if steam_metadata else None
-    steam_client_url = f"steam://store/{app_id}" if app_id else None
 
-    links = [f"[**View in browser →**]({url})"]
-    if steam_client_url:
-        links.append(f"[**View in Steam →**]({steam_client_url})")
+    if app_id:
+        steam_url = f"https://store.steampowered.com/app/{app_id}"
+    else:
+        steam_url = url
 
-    description_parts.append("  ·  ".join(links))
+    description_parts.append(
+        f"[**View on Steam →**]({steam_url})"
+    )
 
     description = "\n\n".join(description_parts)
 
