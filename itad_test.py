@@ -161,6 +161,8 @@ def get_steam_metadata(itad_url):
         app_type = game_data.get("type", "")
 
         description = game_data.get("short_description", "")
+        # Steam header image, used if ITAD has no banner
+        steam_header_image = game_data.get("header_image")
         description = re.sub(r"<[^>]+>", "", description)
         description = html.unescape(description)
 
@@ -224,6 +226,7 @@ def get_steam_metadata(itad_url):
             "review_score_desc": review_score_desc,
             "total_reviews": total_reviews,
             "english_supported": english_supported,
+            "header_image": steam_header_image,
             "app_id": app_id
         }
 
@@ -288,6 +291,9 @@ for item in new_deals:
         continue
 
     item["steam_metadata"] = metadata
+    # Use Steam header image if ITAD has no banner
+    if not banner_url and steam_metadata:
+        banner_url = steam_metadata.get("header_image")
     eligible_deals.append(item)
 
 print(
@@ -370,20 +376,20 @@ for item in new_deals:
             f"*{game_description[:700]}*"
         )
 
-    # Discount on its own line, as in the original design
-    description_parts.append(
-        f"**{discount}% OFF**"
-    )
+    # Discount and Steam reviews on the same line
+    discount_line = f"**{discount}% OFF**"
 
-    # Price and Steam reviews on the same line
+    if review_score_desc and total_reviews:
+        discount_line += (
+            f"　　　`{review_score_desc}` · {total_reviews:,} reviews"
+        )
+
+    description_parts.append(discount_line)
+
+    # Price on its own line
     price_line = (
         f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**"
     )
-
-    if review_score_desc and total_reviews:
-        price_line += (
-            f"  ·  **{review_score_desc}** · `{total_reviews:,} reviews`"
-        )
 
     description_parts.append(price_line)
 
@@ -411,13 +417,6 @@ for item in new_deals:
 
     # Keep discount and price as separate fields; place reviews immediately after them.
     fields = []
-
-    if review_score_desc and total_reviews:
-        fields.append({
-            "name": "Steam Reviews",
-            "value": f"**{review_score_desc}** · `{total_reviews:,} reviews`",
-            "inline": True
-        })
 
     if history_low_price is not None:
 
