@@ -1,1 +1,122 @@
-[]
+{
+  "019f8086-c217-7164-b764-38bbcb45d35a": {
+    "title": "FROGGY REVENGE",
+    "price": 2.54,
+    "regular_price": 50.99,
+    "discount": 95
+  },
+  "018d937f-6482-701b-ac01-362ef1607b40": {
+    "title": "Killer Worm 2",
+    "price": 0.49,
+    "regular_price": 9.8,
+    "discount": 95
+  },
+  "019c7c95-cc04-71be-87a0-6ecbd1ba2f1c": {
+    "title": "A Diamond Display",
+    "price": 8.49,
+    "regular_price": 169.99,
+    "discount": 95
+  },
+  "019cfc34-69dd-70c3-a882-5cbe68b8d1b9": {
+    "title": "狐狸射手 / Fox Shooter",
+    "price": 8.49,
+    "regular_price": 169.99,
+    "discount": 95
+  },
+  "019c2156-6843-7363-a4b8-5da58baa182f": {
+    "title": "Bo Le Judging Horses",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "019b0ff9-c0ab-7313-91ee-d97253c13e4c": {
+    "title": "AI Games",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "0199ac0c-32c5-70bb-b325-1ed9961645ba": {
+    "title": "AI Snake",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "0190f72c-d003-726f-8f8b-88eaa4dec290": {
+    "title": "Realm",
+    "price": 1.44,
+    "regular_price": 28.99,
+    "discount": 95
+  },
+  "0197eb69-717e-7258-92dc-4a48c21a4e0a": {
+    "title": "Rolling Ball: HD Remaster",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "01948e37-658e-72d6-8573-7dbb3d3c01df": {
+    "title": "Tactical Ghost",
+    "price": 0.51,
+    "regular_price": 10.25,
+    "discount": 95
+  },
+  "0194d6b0-ae3b-73be-8572-17b9beccf419": {
+    "title": "Tech Blast",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "0194d6b0-ae2d-720a-b50e-0377199e8808": {
+    "title": "SNAKE GAME ULTRA CORE",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "0194d6b0-ae21-70bd-9797-bfc9ab44d23b": {
+    "title": "Schizo Dark",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "0194d6b0-ae12-7156-adf3-7a206520697b": {
+    "title": "Magic Tiny Lands",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "0194d6b0-adf6-71df-b240-dace8c85fd99": {
+    "title": "Cyber Tower 2048",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "0194d6b0-ae4e-7347-87cf-8ef19d8e5bec": {
+    "title": "Unusual and not safe experiments",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "0194d6b0-ae03-70cb-906c-1f22034c9db7": {
+    "title": "Kitty's Hungry Adventure",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "018eecae-40c9-732e-9f26-c3bd08e659b7": {
+    "title": "Upstream Ante",
+    "price": 0.77,
+    "regular_price": 15.49,
+    "discount": 95
+  },
+  "01912fc4-f82d-7234-950e-4fd41d1bcbdc": {
+    "title": "Pitty Meaty",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  },
+  "0190ea4f-6a3a-710b-ae76-1ca6a88d27d3": {
+    "title": "KILL KILL KILL KILL",
+    "price": 1.49,
+    "regular_price": 29.99,
+    "discount": 95
+  }
+}
