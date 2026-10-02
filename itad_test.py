@@ -172,6 +172,17 @@ def get_steam_metadata(itad_url):
             if "description" in genre
         ]
 
+        # Detect Steam Early Access games
+        steam_categories = [
+            category.get("description", "")
+            for category in game_data.get("categories", [])
+        ]
+
+        early_access = any(
+            "early access" in category.casefold()
+            for category in steam_categories
+        )
+
         # -------------------------
         # Check English language support
         # -------------------------
@@ -254,6 +265,7 @@ def get_steam_metadata(itad_url):
 
         return {
             "type": app_type,
+            "early_access": early_access,
             "description": description,
             "genres": genres,
             "review_score_desc": review_score_desc,
@@ -313,6 +325,28 @@ for item in new_deals:
         print(
             f"SKIPPED: Not a full game: "
             f"{deal['title']} ({metadata.get('type')})"
+        )
+        continue
+
+    if metadata.get("early_access"):
+        print(
+            f"SKIPPED: Early Access game: {deal['title']}"
+        )
+        continue
+
+    review_score_desc = metadata.get("review_score_desc")
+    total_reviews = metadata.get("total_reviews") or 0
+
+    if not review_score_desc or total_reviews <= 0:
+        print(
+            f"SKIPPED: No Steam reviews: {deal['title']}"
+        )
+        continue
+
+    if "negative" in review_score_desc.casefold():
+        print(
+            f"SKIPPED: Negative Steam reviews "
+            f"({review_score_desc}): {deal['title']}"
         )
         continue
 
@@ -392,8 +426,26 @@ for item in new_deals:
     # Genres as compact tags
     # -------------------------
 
+    # Colored markers for game genres
+    genre_colors = {
+        "action": "🔴",
+        "adventure": "🟠",
+        "indie": "🟣",
+        "casual": "🟢",
+        "rpg": "🔵",
+        "strategy": "🟡",
+        "simulation": "🟤",
+        "sports": "⚽",
+        "racing": "🟠",
+        "massively multiplayer": "🔵",
+        "free to play": "🟢",
+        "early access": "🟡",
+        "horror": "🟣",
+        "platformer": "🟠",
+    }
+
     genre_text = "  ".join(
-        f"`{genre}`"
+        f"{genre_colors.get(genre.casefold(), '⚪')} `{genre}`"
         for genre in genres
     )
 
@@ -414,7 +466,7 @@ for item in new_deals:
 
     if review_score_desc and total_reviews:
         discount_line += (
-            f"　　　`{review_score_desc}` · {total_reviews:,} reviews"
+            f"　　　　　`{review_score_desc}` · {total_reviews:,} reviews"
         )
 
     description_parts.append(discount_line)
