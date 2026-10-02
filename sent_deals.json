@@ -1,1 +1,104 @@
-[]
+{
+  "019fff04-a747-7377-ab6f-37d69a879ca9": {
+    "title": "SPHERE ROLLER",
+    "price": 2.54,
+    "regular_price": 50.99,
+    "discount": 95
+  },
+  "019fe063-2ba2-7333-8354-b414719ad139": {
+    "title": "Minesweeper 3D",
+    "price": 2.54,
+    "regular_price": 50.99,
+    "discount": 95
+  },
+  "019f8086-c217-7164-b764-38bbcb45d35a": {
+    "title": "FROGGY REVENGE",
+    "price": 2.54,
+    "regular_price": 50.99,
+    "discount": 95
+  },
+  "019c7c95-cc04-71be-87a0-6ecbd1ba2f1c": {
+    "title": "A Diamond Display",
+    "price": 8.49,
+    "regular_price": 169.99,
+    "discount": 95
+  },
+  "019cfc34-69dd-70c3-a882-5cbe68b8d1b9": {
+    "title": "狐狸射手 / Fox Shooter",
+    "price": 8.49,
+    "regular_price": 169.99,
+    "discount": 95
+  },
+  "019c2156-6843-7363-a4b8-5da58baa182f": {
+    "title": "Bo Le Judging Horses",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "019b0ff9-c0ab-7313-91ee-d97253c13e4c": {
+    "title": "AI Games",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "019a9390-d06b-7259-a619-cbb078bc797c": {
+    "title": "Run from the Cops!",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "019a9390-d068-72f2-9be9-790bd47e26b5": {
+    "title": "TurboJoy",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "019a71a9-8621-73dc-a96c-b06d85d488b6": {
+    "title": "Speed Vortex",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "019a6e4a-c3ea-739e-b57f-cc972d5def1f": {
+    "title": "Aquabike Rush",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "0199ac0c-32c5-70bb-b325-1ed9961645ba": {
+    "title": "AI Snake",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "01997604-7231-7200-844e-023f571f2336": {
+    "title": "EmberStride",
+    "price": 1.44,
+    "regular_price": 28.99,
+    "discount": 95
+  },
+  "0190f72c-d003-726f-8f8b-88eaa4dec290": {
+    "title": "Realm",
+    "price": 1.44,
+    "regular_price": 28.99,
+    "discount": 95
+  },
+  "0197eb19-4cb6-7231-bc67-44ed2c9112d3": {
+    "title": "Ammo Bounce",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  },
+  "0197eb69-717e-7258-92dc-4a48c21a4e0a": {
+    "title": "Rolling Ball: HD Remaster",
+    "price": 3.09,
+    "regular_price": 61.99,
+    "discount": 95
+  },
+  "0197d0a6-cbe6-7230-9c67-5f959d8c8473": {
+    "title": "Master of 4 Swords",
+    "price": 1.99,
+    "regular_price": 39.99,
+    "discount": 95
+  }
+}
