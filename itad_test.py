@@ -445,7 +445,7 @@ for item in new_deals:
     }
 
     genre_text = "  ".join(
-        f"{genre_colors.get(genre.casefold(), '⚪')} `{genre}`"
+        f"{genre_colors.get(genre.casefold(), '⚪')} **{genre}**"
         for genre in genres
     )
 
@@ -455,11 +455,14 @@ for item in new_deals:
 
     description_parts = []
 
-    # Game description immediately below the title
+    # Game description with Discord's quote styling
     if game_description:
-        description_parts.append(
-            f"*{game_description[:700]}*"
+        quoted_description = "\n".join(
+            f"> {line}"
+            for line in game_description[:700].strip().splitlines()
         )
+
+        description_parts.append(quoted_description)
 
     # Discount and Steam reviews on the same line
     discount_line = f"**{discount}% OFF**"
@@ -470,10 +473,12 @@ for item in new_deals:
         )
 
     description_parts.append(discount_line)
+    currency_display = "€" if currency == "EUR" else currency
 
     # Price on its own line
     price_line = (
-        f"~~{regular_price:.2f} {currency}~~ → **{price:.2f} {currency}**"
+        f"~~{regular_price:.2f} {currency_display}~~ → "
+        f"**{price:.2f} {currency_display}**"
     )
 
     description_parts.append(price_line)
@@ -506,14 +511,14 @@ for item in new_deals:
     if history_low_price is not None:
 
         fields.append({
-            "name": "History Low",
-            "value": f"{history_low_price:.2f} {currency}",
+            "name": "__History Low__",
+            "value": f"{history_low_price:.2f} {currency_display}",
             "inline": True
         })
 
     fields.append({
-        "name": "Sale Ends",
-        "value": f"**{expiry or 'Unknown'}**",
+        "name": "__Sale Ends__",
+        "value": f"{expiry or 'Unknown'}",
         "inline": True
     })
 
