@@ -197,7 +197,7 @@ def get_steam_metadata(itad_url):
         review_score_desc = None
         total_reviews = 0
 
-                try:
+        try:
             reviews_response = requests.get(
                 f"https://store.steampowered.com/appreviews/{app_id}",
                 params={
