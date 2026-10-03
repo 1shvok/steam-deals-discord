@@ -445,7 +445,7 @@ for item in new_deals:
     }
 
     genre_text = "  ".join(
-        f"{genre_colors.get(genre.casefold(), '⚪')} **{genre}**"
+        f"{genre_colors.get(genre.casefold(), '⚪')} `{genre.upper()}`"
         for genre in genres
     )
 
@@ -458,7 +458,7 @@ for item in new_deals:
     # Game description with Discord's quote styling
     if game_description:
         quoted_description = "\n".join(
-            f"> {line}"
+            f"> *{line}*"
             for line in game_description[:700].strip().splitlines()
         )
 
@@ -469,7 +469,7 @@ for item in new_deals:
 
     if review_score_desc and total_reviews:
         discount_line += (
-            f"　　　　　`{review_score_desc}` · {total_reviews:,} reviews"
+            f"　　        　　　`{review_score_desc}` · {total_reviews:,} reviews"
         )
 
     description_parts.append(discount_line)
