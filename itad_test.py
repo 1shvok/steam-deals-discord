@@ -5,6 +5,7 @@ import requests
 import re
 import html
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 API_KEY = os.environ["ITAD_API_KEY"]
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
@@ -396,7 +397,13 @@ for item in new_deals:
     expiry = deal_info.get("expiry")
 
     if expiry:
-        expiry = expiry.replace("T", " ")[:16]
+        try:
+            expiry_datetime = datetime.fromisoformat(
+                expiry.replace("Z", "+00:00")
+            )
+            expiry = expiry_datetime.strftime("%d.%m.%Y     %H:%M")
+        except ValueError:
+            expiry = expiry.replace("T", " ")[:16]
 
     # -------------------------
     # Get Steam metadata
@@ -426,26 +433,8 @@ for item in new_deals:
     # Genres as compact tags
     # -------------------------
 
-    # Colored markers for game genres
-    genre_colors = {
-        "action": "🔴",
-        "adventure": "🟠",
-        "indie": "🟣",
-        "casual": "🟢",
-        "rpg": "🔵",
-        "strategy": "🟡",
-        "simulation": "🟤",
-        "sports": "⚽",
-        "racing": "🟠",
-        "massively multiplayer": "🔵",
-        "free to play": "🟢",
-        "early access": "🟡",
-        "horror": "🟣",
-        "platformer": "🟠",
-    }
-
     genre_text = "  ".join(
-        f"{genre_colors.get(genre.casefold(), '⚪')} `{genre.upper()}`"
+        f"`{genre.upper()}`"
         for genre in genres
     )
 
@@ -511,13 +500,13 @@ for item in new_deals:
     if history_low_price is not None:
 
         fields.append({
-            "name": "__History Low__",
+            "name": "**History Low**",
             "value": f"{history_low_price:.2f} {currency_display}",
             "inline": True
         })
 
     fields.append({
-        "name": "__Sale Ends__",
+        "name": "**Sale Ends**",
         "value": f"{expiry or 'Unknown'}",
         "inline": True
     })
@@ -529,7 +518,6 @@ for item in new_deals:
     embed = {
         "title": title,
         "description": description,
-        "url": url,
         "color": 5763719,
         "fields": fields,
         "image": {
