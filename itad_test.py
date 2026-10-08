@@ -129,6 +129,9 @@ for deal_id in current_game_ids:
 
     if isinstance(entry, dict):
         entry["last_seen"] = now.isoformat()
+        history_changed = True
+
+history_changed = False
 
 
 # Remove deals that have not appeared in ITAD for 14 days.
@@ -162,6 +165,7 @@ for deal_id, entry in list(history.items()):
                 f"{deal_id} (not seen for {HISTORY_RETENTION_DAYS} days)"
             )
             del history[deal_id]
+            history_changed = True
 
     except (ValueError, TypeError):
         print(
@@ -633,6 +637,22 @@ for item in new_deals:
 # -------------------------
 
 if not embeds:
+
+    if history_changed:
+        with open(
+            HISTORY_FILE,
+            "w",
+            encoding="utf-8"
+        ) as file:
+            json.dump(
+                history,
+                file,
+                indent=2,
+                ensure_ascii=False
+            )
+
+        print("History changes saved.")
+
     print("No new or changed deals.")
     print("Nothing to send.")
     raise SystemExit(0)
