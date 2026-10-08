@@ -183,11 +183,14 @@ for deal in games:
     deal_id = str(deal["id"])
     deal_info = deal["deal"]
 
+    expiry = deal_info.get("expiry")
+
     current_state = {
         "title": deal["title"],
         "price": deal_info["price"]["amount"],
         "regular_price": deal_info["regular"]["amount"],
-        "discount": deal_info["cut"]
+        "discount": deal_info["cut"],
+        "expiry": expiry
     }
 
     previous_entry = history.get(deal_id)
