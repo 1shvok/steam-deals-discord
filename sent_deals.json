@@ -1,104 +1,452 @@
 {
   "019fff04-a747-7377-ab6f-37d69a879ca9": {
-    "title": "SPHERE ROLLER",
-    "price": 2.54,
-    "regular_price": 50.99,
-    "discount": 95
+    "state": {
+      "title": "SPHERE ROLLER",
+      "price": 2.54,
+      "regular_price": 50.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019fe063-2ba2-7333-8354-b414719ad139": {
-    "title": "Minesweeper 3D",
-    "price": 2.54,
-    "regular_price": 50.99,
-    "discount": 95
+    "state": {
+      "title": "Minesweeper 3D",
+      "price": 2.54,
+      "regular_price": 50.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019f8086-c217-7164-b764-38bbcb45d35a": {
-    "title": "FROGGY REVENGE",
-    "price": 2.54,
-    "regular_price": 50.99,
-    "discount": 95
+    "state": {
+      "title": "FROGGY REVENGE",
+      "price": 2.54,
+      "regular_price": 50.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019c7c95-cc04-71be-87a0-6ecbd1ba2f1c": {
-    "title": "A Diamond Display",
-    "price": 8.49,
-    "regular_price": 169.99,
-    "discount": 95
+    "state": {
+      "title": "A Diamond Display",
+      "price": 8.49,
+      "regular_price": 169.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019cfc34-69dd-70c3-a882-5cbe68b8d1b9": {
-    "title": "狐狸射手 / Fox Shooter",
-    "price": 8.49,
-    "regular_price": 169.99,
-    "discount": 95
+    "state": {
+      "title": "狐狸射手 / Fox Shooter",
+      "price": 8.49,
+      "regular_price": 169.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019c2156-6843-7363-a4b8-5da58baa182f": {
-    "title": "Bo Le Judging Horses",
-    "price": 3.09,
-    "regular_price": 61.99,
-    "discount": 95
+    "state": {
+      "title": "Bo Le Judging Horses",
+      "price": 3.09,
+      "regular_price": 61.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019b0ff9-c0ab-7313-91ee-d97253c13e4c": {
-    "title": "AI Games",
-    "price": 3.09,
-    "regular_price": 61.99,
-    "discount": 95
+    "state": {
+      "title": "AI Games",
+      "price": 3.09,
+      "regular_price": 61.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019a9390-d06b-7259-a619-cbb078bc797c": {
-    "title": "Run from the Cops!",
-    "price": 1.99,
-    "regular_price": 39.99,
-    "discount": 95
+    "state": {
+      "title": "Run from the Cops!",
+      "price": 1.99,
+      "regular_price": 39.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019a9390-d068-72f2-9be9-790bd47e26b5": {
-    "title": "TurboJoy",
-    "price": 1.99,
-    "regular_price": 39.99,
-    "discount": 95
+    "state": {
+      "title": "TurboJoy",
+      "price": 1.99,
+      "regular_price": 39.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019a71a9-8621-73dc-a96c-b06d85d488b6": {
-    "title": "Speed Vortex",
-    "price": 1.99,
-    "regular_price": 39.99,
-    "discount": 95
+    "state": {
+      "title": "Speed Vortex",
+      "price": 1.99,
+      "regular_price": 39.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "019a6e4a-c3ea-739e-b57f-cc972d5def1f": {
-    "title": "Aquabike Rush",
-    "price": 1.99,
-    "regular_price": 39.99,
-    "discount": 95
+    "state": {
+      "title": "Aquabike Rush",
+      "price": 1.99,
+      "regular_price": 39.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "0199ac0c-32c5-70bb-b325-1ed9961645ba": {
-    "title": "AI Snake",
-    "price": 3.09,
-    "regular_price": 61.99,
-    "discount": 95
+    "state": {
+      "title": "AI Snake",
+      "price": 3.09,
+      "regular_price": 61.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "01997604-7231-7200-844e-023f571f2336": {
-    "title": "EmberStride",
-    "price": 1.44,
-    "regular_price": 28.99,
-    "discount": 95
+    "state": {
+      "title": "EmberStride",
+      "price": 1.44,
+      "regular_price": 28.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "0190f72c-d003-726f-8f8b-88eaa4dec290": {
-    "title": "Realm",
-    "price": 1.44,
-    "regular_price": 28.99,
-    "discount": 95
+    "state": {
+      "title": "Realm",
+      "price": 1.44,
+      "regular_price": 28.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "0197eb19-4cb6-7231-bc67-44ed2c9112d3": {
-    "title": "Ammo Bounce",
-    "price": 1.99,
-    "regular_price": 39.99,
-    "discount": 95
+    "state": {
+      "title": "Ammo Bounce",
+      "price": 1.99,
+      "regular_price": 39.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "0197eb69-717e-7258-92dc-4a48c21a4e0a": {
-    "title": "Rolling Ball: HD Remaster",
-    "price": 3.09,
-    "regular_price": 61.99,
-    "discount": 95
+    "state": {
+      "title": "Rolling Ball: HD Remaster",
+      "price": 3.09,
+      "regular_price": 61.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   },
   "0197d0a6-cbe6-7230-9c67-5f959d8c8473": {
-    "title": "Master of 4 Swords",
-    "price": 1.99,
-    "regular_price": 39.99,
-    "discount": 95
+    "state": {
+      "title": "Master of 4 Swords",
+      "price": 1.99,
+      "regular_price": 39.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-2072-73fb-bb97-ac720e17b5e0": {
+    "state": {
+      "title": "Pony Island",
+      "price": 0,
+      "regular_price": 4.99,
+      "discount": 100
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018da2ed-d469-72c1-a139-ffb43427acc0": {
+    "state": {
+      "title": "Super Farming Boy",
+      "price": 0.54,
+      "regular_price": 10.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-4eef-73a5-aaed-0f8908352a55": {
+    "state": {
+      "title": "RiMS Racing",
+      "price": 2.49,
+      "regular_price": 49.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-1938-73c6-bf62-3b9bca92dabe": {
+    "state": {
+      "title": "Paranoia: Happiness is Mandatory",
+      "price": 1.49,
+      "regular_price": 29.99,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-7362-7020-9383-0d171c98176f": {
+    "state": {
+      "title": "LiM Beyond One-on-One Basketball",
+      "price": 1.22,
+      "regular_price": 24.5,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-4b48-707e-ba24-47f70ae133ff": {
+    "state": {
+      "title": "Heart of Siam",
+      "price": 1.49,
+      "regular_price": 29.9,
+      "discount": 95
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-2dcf-72d0-be15-7a3a8e895291": {
+    "state": {
+      "title": "Xmas Zombie Rampage 2",
+      "price": 1.19,
+      "regular_price": 19.9,
+      "discount": 94
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-37b5-70ec-aaad-61909ca2f912": {
+    "state": {
+      "title": "SPIIIDERS",
+      "price": 1.19,
+      "regular_price": 19.9,
+      "discount": 94
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-0a0d-7368-a6ba-8aa2735a38f3": {
+    "state": {
+      "title": "Shakes on a Plane",
+      "price": 1.04,
+      "regular_price": 14.99,
+      "discount": 93
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937e-f539-717e-9928-248a61582805": {
+    "state": {
+      "title": "Roguebook",
+      "price": 1.74,
+      "regular_price": 24.99,
+      "discount": 93
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-18f2-717f-9725-0d4b66873396": {
+    "state": {
+      "title": "RIVE",
+      "price": 0.75,
+      "regular_price": 10.75,
+      "discount": 93
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-4cca-70cc-a960-79019ea7c131": {
+    "state": {
+      "title": "Firelight Fantasy: Resistance",
+      "price": 0.83,
+      "regular_price": 11.99,
+      "discount": 93
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-7519-727b-93be-24998f84c8df": {
+    "state": {
+      "title": "Cyber Avenger",
+      "price": 2.09,
+      "regular_price": 29.99,
+      "discount": 93
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-69bf-7332-9ed6-79b7fa167f61": {
+    "state": {
+      "title": "Big Byz Wars",
+      "price": 0.89,
+      "regular_price": 12.79,
+      "discount": 93
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-13c7-72b0-8d92-a36db62c4e48": {
+    "state": {
+      "title": "Tower Hunter:Erza's Trial",
+      "price": 1.19,
+      "regular_price": 14.99,
+      "discount": 92
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-79d6-7127-8537-bd2f5811f3df": {
+    "state": {
+      "title": "Risk of Pain",
+      "price": 0.79,
+      "regular_price": 9.99,
+      "discount": 92
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-3894-7333-a6d4-3638f6aca17c": {
+    "state": {
+      "title": "Orbital Bullet",
+      "price": 1.35,
+      "regular_price": 16.99,
+      "discount": 92
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-4a34-7030-8eca-1a8358046043": {
+    "state": {
+      "title": "Jet Kave Adventure",
+      "price": 1.19,
+      "regular_price": 14.99,
+      "discount": 92
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-3a62-72ac-97b0-f8ed65aef5a6": {
+    "state": {
+      "title": "Endzone - A World Apart",
+      "price": 1.99,
+      "regular_price": 24.99,
+      "discount": 92
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-7388-7095-b6d4-b61e6a01c6da": {
+    "state": {
+      "title": "Zakantosh Cardgame",
+      "price": 0.87,
+      "regular_price": 9.75,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-6b2f-71b2-b856-d4d9461e18f3": {
+    "state": {
+      "title": "The Wraith of the Galaxy",
+      "price": 1.79,
+      "regular_price": 19.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937e-f9c0-7214-b769-e92005aec8d3": {
+    "state": {
+      "title": "We Are The Dwarves",
+      "price": 3.59,
+      "regular_price": 39.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-6b8d-72bc-988b-1f22d9bf45df": {
+    "state": {
+      "title": "Swords Fantasy: Battlefield",
+      "price": 1.07,
+      "regular_price": 11.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-577b-7143-9aff-28ab67136445": {
+    "state": {
+      "title": "Shinobi Shift",
+      "price": 0.89,
+      "regular_price": 9.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-6b7e-7213-992d-536d9fb3e4ab": {
+    "state": {
+      "title": "Painter Simulator",
+      "price": 0.87,
+      "regular_price": 9.75,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-58d8-71e8-a395-ad970c8426eb": {
+    "state": {
+      "title": "Inquisitor's Heart and Soul",
+      "price": 2.69,
+      "regular_price": 29.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-3cf5-7265-b56c-79006c916370": {
+    "state": {
+      "title": "Hourglass",
+      "price": 1.61,
+      "regular_price": 17.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
+  },
+  "018d937f-285b-72cf-96de-7595fbab8c3f": {
+    "state": {
+      "title": "Fragmented",
+      "price": 0.8,
+      "regular_price": 8.99,
+      "discount": 91
+    },
+    "last_seen": "2026-10-08T20:23:53.337675+00:00",
+    "last_sent": "2026-10-08T20:23:53.337675+00:00"
   }
 }
