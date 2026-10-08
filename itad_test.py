@@ -5,7 +5,7 @@ import requests
 import re
 import html
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 API_KEY = os.environ["ITAD_API_KEY"]
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
@@ -18,15 +18,46 @@ HISTORY_FILE = "sent_deals.json"
 # Load sent deals history
 # -------------------------
 
+HISTORY_RETENTION_DAYS = 14
+now = datetime.now(timezone.utc)
+
 try:
     with open(HISTORY_FILE, "r", encoding="utf-8") as file:
         history = json.load(file)
 
     if not isinstance(history, dict):
+        print("WARNING: History file is not a dictionary. Starting with empty history.")
         history = {}
 
-except (FileNotFoundError, json.JSONDecodeError):
+except FileNotFoundError:
     history = {}
+
+except json.JSONDecodeError:
+    print("WARNING: History file is corrupted. Starting with empty history.")
+    history = {}
+
+except OSError as error:
+    print(f"WARNING: Could not read history file: {error}")
+    history = {}
+
+
+# Migrate old history format to the new format.
+for deal_id, entry in list(history.items()):
+
+    if not isinstance(entry, dict):
+        del history[deal_id]
+        continue
+
+    if "state" in entry:
+        continue
+
+    # Old format: the entry itself was the deal state.
+    history[deal_id] = {
+        "state": entry,
+        "last_seen": now.isoformat(),
+        "last_sent": now.isoformat()
+    }
+
 
 print(f"Previously sent deals: {len(history)}")
 
@@ -83,6 +114,65 @@ print(f"Game deals: {len(games)}")
 
 
 # -------------------------
+# Update history visibility
+# -------------------------
+
+current_game_ids = {
+    str(deal.get("id"))
+    for deal in games
+    if deal.get("id") is not None
+}
+
+for deal_id in current_game_ids:
+
+    entry = history.get(deal_id)
+
+    if isinstance(entry, dict):
+        entry["last_seen"] = now.isoformat()
+
+
+# Remove deals that have not appeared in ITAD for 14 days.
+cutoff = now - timedelta(days=HISTORY_RETENTION_DAYS)
+
+for deal_id, entry in list(history.items()):
+
+    if not isinstance(entry, dict):
+        del history[deal_id]
+        continue
+
+    if deal_id in current_game_ids:
+        continue
+
+    last_seen_text = entry.get("last_seen")
+
+    if not last_seen_text:
+        # Old/corrupted entry without a timestamp.
+        # Keep it for now instead of accidentally deleting it.
+        continue
+
+    try:
+        last_seen = datetime.fromisoformat(last_seen_text)
+
+        if last_seen.tzinfo is None:
+            last_seen = last_seen.replace(tzinfo=timezone.utc)
+
+        if last_seen < cutoff:
+            print(
+                f"REMOVED FROM HISTORY: "
+                f"{deal_id} (not seen for {HISTORY_RETENTION_DAYS} days)"
+            )
+            del history[deal_id]
+
+    except (ValueError, TypeError):
+        print(
+            f"WARNING: Invalid last_seen timestamp for {deal_id}. "
+            "Keeping entry."
+        )
+
+print(f"History after cleanup: {len(history)}")
+
+
+# -------------------------
 # Find new or changed deals
 # -------------------------
 
@@ -100,7 +190,12 @@ for deal in games:
         "discount": deal_info["cut"]
     }
 
-    previous_state = history.get(deal_id)
+    previous_entry = history.get(deal_id)
+    previous_state = (
+        previous_entry.get("state")
+        if isinstance(previous_entry, dict)
+        else None
+    )
 
     if previous_state == current_state:
         continue
@@ -650,8 +745,14 @@ for batch_number, batch_items in enumerate(batches, start=1):
 
     # Save only deals from this successfully sent batch.
     for item, embed in batch_items:
+
         deal_id = str(item["deal"]["id"])
-        history[deal_id] = item["state"]
+
+        history[deal_id] = {
+            "state": item["state"],
+            "last_seen": now.isoformat(),
+            "last_sent": now.isoformat()
+        }
 
     with open(
         HISTORY_FILE,
