@@ -91,8 +91,25 @@ if response.status_code != 200:
     print(response.text)
     raise SystemExit(1)
 
-data = response.json()
-deals = data.get("list", [])
+try:
+    data = response.json()
+except ValueError:
+    print("ERROR: ITAD returned invalid JSON. Aborting run.")
+    raise SystemExit(1)
+
+if not isinstance(data, dict):
+    print("ERROR: ITAD returned an unexpected response format.")
+    raise SystemExit(1)
+
+deals = data.get("list")
+
+if not isinstance(deals, list):
+    print("ERROR: ITAD response does not contain a valid deals list.")
+    raise SystemExit(1)
+
+if not deals:
+    print("ERROR: ITAD returned an empty deals list. Aborting to protect history.")
+    raise SystemExit(1)
 
 print(f"Deals received: {len(deals)}")
 
@@ -123,6 +140,8 @@ current_game_ids = {
     if deal.get("id") is not None
 }
 
+history_changed = False
+
 for deal_id in current_game_ids:
 
     entry = history.get(deal_id)
@@ -130,8 +149,6 @@ for deal_id in current_game_ids:
     if isinstance(entry, dict):
         entry["last_seen"] = now.isoformat()
         history_changed = True
-
-history_changed = False
 
 # Remove deals that have not appeared in ITAD for 14 days.
 cutoff = now - timedelta(days=HISTORY_RETENTION_DAYS)
