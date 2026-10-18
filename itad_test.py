@@ -133,7 +133,6 @@ for deal_id in current_game_ids:
 
 history_changed = False
 
-
 # Remove deals that have not appeared in ITAD for 14 days.
 cutoff = now - timedelta(days=HISTORY_RETENTION_DAYS)
 
