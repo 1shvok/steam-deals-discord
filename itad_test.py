@@ -29,18 +29,18 @@ try:
         print("ERROR: History file is not a dictionary. Aborting run.")
         raise SystemExit(1)
 
-    except FileNotFoundError:
-        # A missing history file is allowed on the first run.
-        history = {}
+except FileNotFoundError:
+    # A missing history file is allowed on the first run.
+    history = {}
 
-    except json.JSONDecodeError as error:
-        print(f"ERROR: History file is corrupted: {error}")
-        print("Aborting to prevent duplicate deal notifications.")
-        raise SystemExit(1)
+except json.JSONDecodeError as error:
+    print(f"ERROR: History file is corrupted: {error}")
+    print("Aborting to prevent duplicate deal notifications.")
+    raise SystemExit(1)
 
-    except OSError as error:
-        print(f"ERROR: Could not read history file: {error}")
-        raise SystemExit(1)
+except OSError as error:
+    print(f"ERROR: Could not read history file: {error}")
+    raise SystemExit(1)
 
 
 # Migrate old history format to the new format.
