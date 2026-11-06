@@ -1,15 +1,4 @@
 {
-  "0190f72c-d003-726f-8f8b-88eaa4dec290": {
-    "state": {
-      "title": "Realm",
-      "price": 1.44,
-      "regular_price": 28.99,
-      "discount": 95,
-      "expiry": "2026-10-23T10:00:00+02:00"
-    },
-    "last_seen": "2026-10-23T05:35:56.263845+00:00",
-    "last_sent": "2026-10-09T14:49:17.723263+00:00"
-  },
   "019bdd27-cc4d-7020-a8aa-fd934cdac866": {
     "state": {
       "title": "Can deliver? Survival Kit",
