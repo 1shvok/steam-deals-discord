@@ -235,6 +235,195 @@ print(f"New or changed deals: {len(new_deals)}")
 
 
 # -------------------------
+# Safe Steam reviews lookup
+# -------------------------
+
+STEAM_REVIEW_MIN_INTERVAL = 2.5
+STEAM_REVIEW_MAX_ATTEMPTS = 3
+STEAM_REVIEW_COOLDOWN_SECONDS = 300
+
+_last_steam_review_request = 0.0
+_steam_review_cooldown_until = 0.0
+
+
+def get_steam_reviews(app_id):
+    global _last_steam_review_request
+    global _steam_review_cooldown_until
+
+    # Stop sending requests if Steam has recently blocked us.
+    if time.monotonic() < _steam_review_cooldown_until:
+        return None
+
+    url = f"https://store.steampowered.com/appreviews/{app_id}"
+
+    params = {
+        "json": 1,
+        "language": "all",
+        "filter": "all",
+        "review_type": "all",
+        "num_per_page": 1
+    }
+
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (X11; Linux x86_64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/130.0.0.0 Safari/537.36"
+        ),
+        "Accept": "application/json"
+    }
+
+    for attempt in range(1, STEAM_REVIEW_MAX_ATTEMPTS + 1):
+
+        wait_time = (
+            STEAM_REVIEW_MIN_INTERVAL
+            - (time.monotonic() - _last_steam_review_request)
+        )
+
+        if wait_time > 0:
+            time.sleep(wait_time)
+
+        try:
+            response = requests.get(
+                url,
+                params=params,
+                headers=headers,
+                timeout=20
+            )
+
+            _last_steam_review_request = time.monotonic()
+
+        except requests.RequestException as error:
+
+            if attempt == STEAM_REVIEW_MAX_ATTEMPTS:
+                _steam_review_cooldown_until = (
+                    time.monotonic() + STEAM_REVIEW_COOLDOWN_SECONDS
+                )
+
+                print(
+                    f"Steam reviews request failed for {app_id}: {error}"
+                )
+                return None
+
+            delay = min(20, 3 * (2 ** (attempt - 1)))
+
+            print(
+                f"Steam reviews network error for {app_id}; "
+                f"retrying in {delay}s."
+            )
+
+            time.sleep(delay)
+            continue
+
+        # Retry rate limits and temporary server errors.
+        if (
+            response.status_code in (403, 429)
+            or 500 <= response.status_code < 600
+        ):
+
+            if attempt == STEAM_REVIEW_MAX_ATTEMPTS:
+                _steam_review_cooldown_until = (
+                    time.monotonic() + STEAM_REVIEW_COOLDOWN_SECONDS
+                )
+
+                print(
+                    f"Steam reviews unavailable for {app_id}: "
+                    f"HTTP {response.status_code}."
+                )
+                return None
+
+            retry_after = response.headers.get("Retry-After")
+
+            try:
+                delay = min(60.0, max(2.0, float(retry_after)))
+            except (TypeError, ValueError):
+                delay = min(30, 3 * (2 ** (attempt - 1)))
+
+            print(
+                f"Steam reviews HTTP {response.status_code}; "
+                f"retrying in {delay:g}s."
+            )
+
+            time.sleep(delay)
+            continue
+
+        if response.status_code != 200:
+            print(
+                f"Steam reviews request failed for {app_id}: "
+                f"HTTP {response.status_code}."
+            )
+            return None
+
+        try:
+            reviews_data = response.json()
+
+        except ValueError:
+
+            if attempt == STEAM_REVIEW_MAX_ATTEMPTS:
+                _steam_review_cooldown_until = (
+                    time.monotonic() + STEAM_REVIEW_COOLDOWN_SECONDS
+                )
+
+                content_type = response.headers.get(
+                    "Content-Type", "unknown"
+                )
+
+                print(
+                    f"Steam reviews returned non-JSON data for {app_id} "
+                    f"(HTTP {response.status_code}, "
+                    f"Content-Type: {content_type})."
+                )
+                return None
+
+            delay = min(15, 3 * attempt)
+
+            print(
+                f"Steam reviews returned invalid JSON; "
+                f"retrying in {delay}s."
+            )
+
+            time.sleep(delay)
+            continue
+
+        query_summary = (
+            reviews_data.get("query_summary")
+            if isinstance(reviews_data, dict)
+            else None
+        )
+
+        if not isinstance(query_summary, dict):
+
+            if attempt == STEAM_REVIEW_MAX_ATTEMPTS:
+                _steam_review_cooldown_until = (
+                    time.monotonic() + STEAM_REVIEW_COOLDOWN_SECONDS
+                )
+
+                print(
+                    f"Steam reviews response for {app_id} "
+                    "does not contain query_summary."
+                )
+                return None
+
+            delay = min(15, 3 * attempt)
+            time.sleep(delay)
+            continue
+
+        try:
+            total_reviews = int(
+                query_summary.get("total_reviews", 0) or 0
+            )
+        except (TypeError, ValueError):
+            total_reviews = 0
+
+        return {
+            "review_score_desc": query_summary.get("review_score_desc"),
+            "total_reviews": total_reviews
+        }
+
+    return None
+
+
+# -------------------------
 # Get Steam game metadata
 # -------------------------
 
@@ -324,73 +513,11 @@ def get_steam_metadata(itad_url):
             re.search(r"\bEnglish\b", language_text, re.IGNORECASE)
         )
 
-        # Get Steam's aggregate user review score and review count.
-        # Reviews are optional: a failure here must not block the deal.
-        review_score_desc = None
-        total_reviews = 0
-
-        try:
-            reviews_response = requests.get(
-                f"https://store.steampowered.com/appreviews/{app_id}",
-                params={
-                    "json": 1,
-                    "language": "all",
-                    "filter": "all",
-                    "review_type": "all",
-                    "num_per_page": 1
-                },
-                timeout=15
-            )
-
-            if reviews_response.status_code == 200:
-                try:
-                    reviews_data = reviews_response.json()
-                except ValueError:
-                    print(
-                        f"Steam reviews error for {app_id}: "
-                        "Invalid JSON response"
-                    )
-                else:
-                    query_summary = reviews_data.get("query_summary")
-
-                    if query_summary:
-                        review_score_desc = query_summary.get(
-                            "review_score_desc"
-                        )
-                        total_reviews = query_summary.get(
-                            "total_reviews", 0
-                        )
-
-                        if not review_score_desc or not total_reviews:
-                            print(
-                                f"Steam reviews: no aggregate rating "
-                                f"for app {app_id}"
-                            )
-                    else:
-                        print(
-                            f"Steam reviews error for {app_id}: "
-                            "query_summary missing"
-                        )
-
-            else:
-                print(
-                    f"Steam reviews error for {app_id}: "
-                    f"HTTP {reviews_response.status_code} — "
-                    f"{reviews_response.text[:300]}"
-                )
-
-        except requests.RequestException as error:
-            print(
-                f"Steam reviews request failed for {app_id}: {error}"
-            )
-
         return {
             "type": app_type,
             "early_access": early_access,
             "description": description,
             "genres": genres,
-            "review_score_desc": review_score_desc,
-            "total_reviews": total_reviews,
             "english_supported": english_supported,
             "header_image": steam_header_image,
             "app_id": app_id
@@ -425,7 +552,10 @@ def is_special_edition(title):
 # Filter using Steam metadata
 # -------------------------
 
+
 eligible_deals = []
+review_api_checks = 0
+review_api_failures = 0
 
 for item in new_deals:
 
@@ -455,8 +585,27 @@ for item in new_deals:
         )
         continue
 
-    review_score_desc = metadata.get("review_score_desc")
-    total_reviews = metadata.get("total_reviews") or 0
+    if not metadata.get("english_supported"):
+        print(
+            f"SKIPPED: No English language support listed: "
+            f"{deal['title']}"
+        )
+        continue
+
+    # Check reviews only after all other filters.
+    review_api_checks += 1
+    reviews = get_steam_reviews(metadata.get("app_id"))
+
+    if reviews is None:
+        review_api_failures += 1
+        print(
+            f"SKIPPED: Steam review data unavailable: "
+            f"{deal['title']}"
+        )
+        continue
+
+    review_score_desc = reviews.get("review_score_desc")
+    total_reviews = reviews.get("total_reviews", 0)
 
     if not review_score_desc or total_reviews <= 0:
         print(
@@ -471,12 +620,8 @@ for item in new_deals:
         )
         continue
 
-    if not metadata.get("english_supported"):
-        print(
-            f"SKIPPED: No English language support listed: "
-            f"{deal['title']}"
-        )
-        continue
+    metadata["review_score_desc"] = review_score_desc
+    metadata["total_reviews"] = total_reviews
 
     item["steam_metadata"] = metadata
     eligible_deals.append(item)
@@ -486,7 +631,15 @@ print(
     f"{len(eligible_deals)}"
 )
 
+if review_api_failures:
+    print(
+        f"::warning::Steam review data unavailable for "
+        f"{review_api_failures} of {review_api_checks} candidates. "
+        "Affected games were skipped."
+    )
+
 new_deals = eligible_deals
+
 
 # -------------------------
 # Create Discord embeds
