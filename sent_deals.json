@@ -64,5 +64,1149 @@
     },
     "last_seen": "2026-11-02T11:52:58.575811+00:00",
     "last_sent": "2026-10-19T18:01:31.912823+00:00"
+  },
+  "018d937f-6c94-7096-b156-2a973822f0b3": {
+    "state": {
+      "title": "TT Isle of Man: Ride on the Edge 3 Racing Fan Edition",
+      "price": 2.99,
+      "regular_price": 59.99,
+      "discount": 95,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0c59-732f-8b16-5a9df15c549c": {
+    "state": {
+      "title": "Crystar",
+      "price": 1.17,
+      "regular_price": 19.5,
+      "discount": 94,
+      "expiry": "2026-11-18T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-47f6-724a-9719-3e72bccb1dbe": {
+    "state": {
+      "title": "Shiro",
+      "price": 0.89,
+      "regular_price": 12.79,
+      "discount": 93,
+      "expiry": "2026-11-16T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0df3-730e-ae00-cdaa299bd332": {
+    "state": {
+      "title": "Phantom Breaker: Battle Grounds",
+      "price": 1.03,
+      "regular_price": 14.79,
+      "discount": 93,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-7042-7148-8b05-709e73e4fe51": {
+    "state": {
+      "title": "MiceGard",
+      "price": 0.89,
+      "regular_price": 12.79,
+      "discount": 93,
+      "expiry": "2026-11-16T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f558-71de-ac04-20579ab930db": {
+    "state": {
+      "title": "Giant Machines 2017",
+      "price": 1.39,
+      "regular_price": 19.99,
+      "discount": 93,
+      "expiry": "2026-11-23T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-4eeb-7084-878f-15fb7a2b14a4": {
+    "state": {
+      "title": "The Excrawlers",
+      "price": 0.89,
+      "regular_price": 12.79,
+      "discount": 93,
+      "expiry": "2026-11-16T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-e9e3-70ef-80d8-679db8c99a77": {
+    "state": {
+      "title": "JASEM: Just Another Shooter with Electronic Music",
+      "price": 0.65,
+      "regular_price": 8.19,
+      "discount": 92,
+      "expiry": "2026-11-18T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-47dc-7395-99ae-859cba142903": {
+    "state": {
+      "title": "Prodigal",
+      "price": 1.12,
+      "regular_price": 12.49,
+      "discount": 91,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d97af-fc88-70a9-adae-00733133e120": {
+    "state": {
+      "title": "Ingression",
+      "price": 0.97,
+      "regular_price": 9.75,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-6b65-706b-bbd6-29bb705cba44": {
+    "state": {
+      "title": "Tchia: Oléti Edition",
+      "price": 3.49,
+      "regular_price": 34.99,
+      "discount": 90,
+      "expiry": "2026-11-25T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-03fa-705c-a49a-fed51c923e87": {
+    "state": {
+      "title": "Zanki Zero: Last Beginning",
+      "price": 5.99,
+      "regular_price": 59.99,
+      "discount": 90,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f4d1-71f6-8d88-ef9250ac2e4e": {
+    "state": {
+      "title": "WRC 8 FIA World Rally Championship",
+      "price": 2.99,
+      "regular_price": 29.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2f2f-73e8-b779-3631e7761f09": {
+    "state": {
+      "title": "WRC 7 FIA World Rally Championship",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0e2d-717e-8fce-1f04f7f11a40": {
+    "state": {
+      "title": "WRC 6",
+      "price": 1.49,
+      "regular_price": 14.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-ff82-719a-8dbe-4c7b40ab1e6b": {
+    "state": {
+      "title": "Winds of Change",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-4445-7278-b390-6b63be8413b0": {
+    "state": {
+      "title": "Werewolf: The Apocalypse - Heart of the Forest",
+      "price": 1.24,
+      "regular_price": 12.49,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-fed9-731e-91ae-2499da03cf41": {
+    "state": {
+      "title": "Way of the Samurai 4",
+      "price": 2.29,
+      "regular_price": 22.99,
+      "discount": 90,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-3488-7001-9866-089b2cf161ba": {
+    "state": {
+      "title": "Way of the Samurai 3",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2dc7-7313-be22-b5404e19852b": {
+    "state": {
+      "title": "URAGUN",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-19T21:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f53e-7313-b466-705f14a7e59b": {
+    "state": {
+      "title": "Transport Fever",
+      "price": 2.99,
+      "regular_price": 29.99,
+      "discount": 90,
+      "expiry": "2026-11-22T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1cac-7332-84ea-de906ebb75f2": {
+    "state": {
+      "title": "Tetraminos",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-3427-703c-85b4-9c2545acb752": {
+    "state": {
+      "title": "Tale of Fallen Dragons",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1aec-7102-83f9-35f468f6cc40": {
+    "state": {
+      "title": "Styx: Shards of Darkness",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-61ac-73ab-83dc-0744bafe674b": {
+    "state": {
+      "title": "Steelrising - Bastille Edition",
+      "price": 3.99,
+      "regular_price": 39.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-08bd-7006-a0f3-0835c5890e94": {
+    "state": {
+      "title": "Soul Axiom",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-17T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-75cd-70d4-8dda-a1e5df8e55b1": {
+    "state": {
+      "title": "SOS OPS!",
+      "price": 0.49,
+      "regular_price": 4.99,
+      "discount": 90,
+      "expiry": "2026-11-27T16:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-5e0e-71d6-a8ac-f36fbe3897db": {
+    "state": {
+      "title": "Sniper Elite 5",
+      "price": 4.99,
+      "regular_price": 49.99,
+      "discount": 90,
+      "expiry": "2026-11-17T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0600-7137-b94e-e2aacd2dfd1d": {
+    "state": {
+      "title": "Sniper Elite 4",
+      "price": 5.99,
+      "regular_price": 59.99,
+      "discount": 90,
+      "expiry": "2026-11-17T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2f0e-72df-8fe4-0cfa08e625d5": {
+    "state": {
+      "title": "RO2 with Rising Storm",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-25T15:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-010c-7126-bd87-f9cf8bce8cbf": {
+    "state": {
+      "title": "Rising Storm 2: Vietnam",
+      "price": 2.29,
+      "regular_price": 22.99,
+      "discount": 90,
+      "expiry": "2026-11-25T15:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-fedb-71ff-9cd7-683b6f2f9761": {
+    "state": {
+      "title": "Rising Storm - Digital Deluxe",
+      "price": 2.79,
+      "regular_price": 27.99,
+      "discount": 90,
+      "expiry": "2026-11-25T15:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1782-7156-8eca-1ee38cef2a78": {
+    "state": {
+      "title": "Ride 2",
+      "price": 2.49,
+      "regular_price": 24.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-43c0-7280-95d5-eed0909013af": {
+    "state": {
+      "title": "Re:ZERO -Starting Life in Another World- The Prophecy of the Throne",
+      "price": 5.99,
+      "regular_price": 59.99,
+      "discount": 90,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2a1d-71dd-8be6-6ac5c60c831b": {
+    "state": {
+      "title": "Quern - Undying Thoughts",
+      "price": 2.29,
+      "regular_price": 22.99,
+      "discount": 90,
+      "expiry": "2026-11-21T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1009-7168-820c-dd1d8bd38ec3": {
+    "state": {
+      "title": "Pinstripe",
+      "price": 1.47,
+      "regular_price": 14.79,
+      "discount": 90,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f52c-726b-bfbf-c6914dd16f40": {
+    "state": {
+      "title": "Ninja Stealth",
+      "price": 0.49,
+      "regular_price": 4.9,
+      "discount": 90,
+      "expiry": "2026-11-21T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-75bd-705d-8acc-6b4e78910c13": {
+    "state": {
+      "title": "Nickelodeon All-Star Brawl 2",
+      "price": 4.99,
+      "regular_price": 49.99,
+      "discount": 90,
+      "expiry": "2026-11-20T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d979a-5995-7259-ba09-69181bc46cbf": {
+    "state": {
+      "title": "Never Give Up",
+      "price": 1.47,
+      "regular_price": 14.79,
+      "discount": 90,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-ffc1-73a4-a465-fb8c6e494fc9": {
+    "state": {
+      "title": "MXGP 2019 - The Official Motocross Videogame",
+      "price": 2.49,
+      "regular_price": 24.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-fed0-7194-99b6-6cd60c30b181": {
+    "state": {
+      "title": "MotoGP™15: Game",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0422-70dc-8d2c-443143438458": {
+    "state": {
+      "title": "Mahjong",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-24c1-702c-8f43-6380dab49ad4": {
+    "state": {
+      "title": "Lost Artifacts",
+      "price": 1.47,
+      "regular_price": 14.79,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1add-71a2-bfee-94605013a9ee": {
+    "state": {
+      "title": "Kung Fu Strike: The Warrior's Rise",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-ff8e-7271-ae44-d9252a33c7da": {
+    "state": {
+      "title": "Katy and Bob Safari Cafe",
+      "price": 1.47,
+      "regular_price": 14.79,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1f25-70c0-9c55-9c37d94ec520": {
+    "state": {
+      "title": "2Dark",
+      "price": 2.49,
+      "regular_price": 24.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-ff7d-72cb-a737-8c4850fe85a2": {
+    "state": {
+      "title": "Hitman Absolution",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-00d5-71e2-84a8-4ee7cb7efadd": {
+    "state": {
+      "title": "Graze Counter",
+      "price": 0.97,
+      "regular_price": 9.75,
+      "discount": 90,
+      "expiry": "2026-11-22T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-12e8-7015-8fcc-f0f9bcedb38d": {
+    "state": {
+      "title": "Fortissimo FA INTL Ver",
+      "price": 0.97,
+      "regular_price": 9.75,
+      "discount": 90,
+      "expiry": "2026-11-18T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-24e2-716c-bd72-c882afc77936": {
+    "state": {
+      "title": "For The King",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-59b2-704f-a019-29d1897536b5": {
+    "state": {
+      "title": "FootLOL: Epic Soccer League",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-21T13:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-310a-7224-b886-358ecfe6731f": {
+    "state": {
+      "title": "Feel The Snow",
+      "price": 1.27,
+      "regular_price": 12.79,
+      "discount": 90,
+      "expiry": "2026-11-21T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1735-71dc-aa95-459cf5167770": {
+    "state": {
+      "title": "Farm Manager 2018",
+      "price": 1.94,
+      "regular_price": 19.49,
+      "discount": 90,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-281f-7353-b032-5ef0759bc01f": {
+    "state": {
+      "title": "Emily is Away <3",
+      "price": 0.81,
+      "regular_price": 8.19,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-6b6d-708a-8128-26a53b50d5f0": {
+    "state": {
+      "title": "DESTRUCTURE: Among Debris",
+      "price": 0.97,
+      "regular_price": 9.75,
+      "discount": 90,
+      "expiry": "2026-11-20T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f81a-7288-868c-492362280db9": {
+    "state": {
+      "title": "Dark Devotion",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-18T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1f46-7086-bcd3-cd18f962376b": {
+    "state": {
+      "title": "Danganronpa: Trigger Happy Havoc",
+      "price": 1.99,
+      "regular_price": 19.99,
+      "discount": 90,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-6ba0-7030-9bf1-8c90d02ca663": {
+    "state": {
+      "title": "Clash: Artifacts of Chaos - Zeno Edition",
+      "price": 2.99,
+      "regular_price": 29.99,
+      "discount": 90,
+      "expiry": "2026-11-22T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2d63-702e-b1f9-f7dcebca004e": {
+    "state": {
+      "title": "Bulletstorm: Full Clip Edition",
+      "price": 3.69,
+      "regular_price": 36.99,
+      "discount": 90,
+      "expiry": "2026-11-23T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-05f8-707d-bd24-938d36001e57": {
+    "state": {
+      "title": "Borderlands: The Pre-Sequel",
+      "price": 3.99,
+      "regular_price": 39.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-21da-71a5-b774-323d7a867ff8": {
+    "state": {
+      "title": "Borderlands 3",
+      "price": 5.99,
+      "regular_price": 59.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f48c-7289-8516-c7c5b2e12eba": {
+    "state": {
+      "title": "Borderlands 2",
+      "price": 2.99,
+      "regular_price": 29.99,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f4b9-7080-816b-cf6e33e64534": {
+    "state": {
+      "title": "Black Desert",
+      "price": 0.99,
+      "regular_price": 9.99,
+      "discount": 90,
+      "expiry": "2026-11-28T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-6ebf-7293-b5f2-4962f50f8f98": {
+    "state": {
+      "title": "嘣境回收战",
+      "price": 0.97,
+      "regular_price": 9.75,
+      "discount": 90,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-32c0-7399-9eb1-2587602fffc2": {
+    "state": {
+      "title": "Beholder",
+      "price": 1.37,
+      "regular_price": 13.79,
+      "discount": 90,
+      "expiry": "2026-11-23T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-3996-7111-949d-f39d1b27ae85": {
+    "state": {
+      "title": "Barro 2020",
+      "price": 0.49,
+      "regular_price": 4.9,
+      "discount": 90,
+      "expiry": "2026-11-28T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-5f56-7076-ae11-f913b825371d": {
+    "state": {
+      "title": "Barro F22",
+      "price": 0.49,
+      "regular_price": 4.9,
+      "discount": 90,
+      "expiry": "2026-11-18T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-3e1b-71c8-82aa-c10a13cf28cb": {
+    "state": {
+      "title": "Barro F",
+      "price": 0.49,
+      "regular_price": 4.9,
+      "discount": 90,
+      "expiry": "2026-11-23T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0854-72f9-9fb1-371b9f6e933d": {
+    "state": {
+      "title": "Arizona Derby",
+      "price": 1.59,
+      "regular_price": 15.99,
+      "discount": 90,
+      "expiry": "2026-11-22T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2d71-73c1-8571-2d2bf3dc7dc1": {
+    "state": {
+      "title": "Along the Edge",
+      "price": 1.39,
+      "regular_price": 13.99,
+      "discount": 90,
+      "expiry": "2026-11-24T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-702b-7147-8227-6579b80f125c": {
+    "state": {
+      "title": "Knock'Em Out",
+      "price": 0.95,
+      "regular_price": 7.99,
+      "discount": 88,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-4b26-71c0-9436-603f46ebbf10": {
+    "state": {
+      "title": "Tavern Master",
+      "price": 1.94,
+      "regular_price": 14.99,
+      "discount": 87,
+      "expiry": "2026-11-28T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2b49-728c-ab77-52b2cc39958d": {
+    "state": {
+      "title": "Sniper Elite 3",
+      "price": 3.76,
+      "regular_price": 28.99,
+      "discount": 87,
+      "expiry": "2026-11-17T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-4280-704c-93a0-81d1f3b4e8f3": {
+    "state": {
+      "title": "Destropolis",
+      "price": 0.76,
+      "regular_price": 5.89,
+      "discount": 87,
+      "expiry": "2026-11-17T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018e9875-731e-72ca-bb85-c5733e287dfc": {
+    "state": {
+      "title": "Gold Mining SImulator",
+      "price": 2.79,
+      "regular_price": 19.99,
+      "discount": 86,
+      "expiry": "2026-11-24T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018ff54e-96cb-7178-b8c0-b78545e6964a": {
+    "state": {
+      "title": "Possessor(s)",
+      "price": 1.49,
+      "regular_price": 9.99,
+      "discount": 85,
+      "expiry": "2026-11-18T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018e36ef-68b7-718a-a586-1b2d58228422": {
+    "state": {
+      "title": "Puppet House",
+      "price": 2.54,
+      "regular_price": 16.99,
+      "discount": 85,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1544-72d0-9416-3ae43f3ac747": {
+    "state": {
+      "title": "YU-NO: A girl who chants love at the bound of this world",
+      "price": 7.49,
+      "regular_price": 49.99,
+      "discount": 85,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-17f6-721f-8f97-9ca838addbbc": {
+    "state": {
+      "title": "Wizardry 8",
+      "price": 1.49,
+      "regular_price": 9.99,
+      "discount": 85,
+      "expiry": "2026-11-24T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-6314-71fa-a5ff-32e8746d01d5": {
+    "state": {
+      "title": "Urbek City Builder",
+      "price": 2.69,
+      "regular_price": 17.99,
+      "discount": 85,
+      "expiry": "2026-11-20T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-17ee-7338-b948-3426f2a3a263": {
+    "state": {
+      "title": "Time Carnage VR",
+      "price": 2.92,
+      "regular_price": 19.5,
+      "discount": 85,
+      "expiry": "2026-11-17T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1766-704f-9189-990d9bd0b535": {
+    "state": {
+      "title": "Odysseus Kosmos and his Robot Quest (Complete Season)",
+      "price": 2.21,
+      "regular_price": 14.79,
+      "discount": 85,
+      "expiry": "2026-11-21T13:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0a4d-7038-8f3e-8290be6bebd6": {
+    "state": {
+      "title": "Nauticrawl",
+      "price": 2.21,
+      "regular_price": 14.79,
+      "discount": 85,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-3e89-70ec-9343-ea7ff3710676": {
+    "state": {
+      "title": "MotoGP™20",
+      "price": 2.99,
+      "regular_price": 19.99,
+      "discount": 85,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f8c5-7010-a344-8bec5817cdea": {
+    "state": {
+      "title": "Machinarium",
+      "price": 2.99,
+      "regular_price": 19.99,
+      "discount": 85,
+      "expiry": "2026-11-28T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-646c-737d-bbb7-7c8f70a4489a": {
+    "state": {
+      "title": "Made in Abyss: Binary Star Falling into Darkness",
+      "price": 8.99,
+      "regular_price": 59.99,
+      "discount": 85,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-fd82-7077-9884-8fc83d22c780": {
+    "state": {
+      "title": "THE KING OF FIGHTERS XIV STEAM EDITION",
+      "price": 8.24,
+      "regular_price": 54.99,
+      "discount": 85,
+      "expiry": "2026-11-21T09:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2244-706b-8af7-b314a09c8ae9": {
+    "state": {
+      "title": "THE KING OF FIGHTERS '98 Ultimate Match Final Edition - Two Pack",
+      "price": 3.44,
+      "regular_price": 22.99,
+      "discount": 85,
+      "expiry": "2026-11-21T09:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-11f0-71db-89ae-04c2b73fbec3": {
+    "state": {
+      "title": "THE KING OF FIGHTERS '97 GLOBAL MATCH",
+      "price": 1.49,
+      "regular_price": 9.99,
+      "discount": 85,
+      "expiry": "2026-11-21T09:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2d40-7235-8725-1ab3a5493978": {
+    "state": {
+      "title": "THE KING OF FIGHTERS 2002 UNLIMITED MATCH",
+      "price": 2.24,
+      "regular_price": 14.99,
+      "discount": 85,
+      "expiry": "2026-11-21T09:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-09bb-70b7-bf26-016c60361822": {
+    "state": {
+      "title": "King of Dragon Pass",
+      "price": 1.79,
+      "regular_price": 11.99,
+      "discount": 85,
+      "expiry": "2026-11-21T13:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-0a74-71e4-ac4c-a73a38646b85": {
+    "state": {
+      "title": "ITTA",
+      "price": 2.21,
+      "regular_price": 14.79,
+      "discount": 85,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-6b0e-7309-802a-ad98a0657737": {
+    "state": {
+      "title": "Chef Life: A Restaurant Simulator - AL FORNO EDITION",
+      "price": 5.99,
+      "regular_price": 39.99,
+      "discount": 85,
+      "expiry": "2026-11-19T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-33d7-726f-bf1d-b8a4482faf81": {
+    "state": {
+      "title": "Hero of the Kingdom II",
+      "price": 1.31,
+      "regular_price": 8.79,
+      "discount": 85,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d96ef-dbc7-720b-9a39-9291641c60a2": {
+    "state": {
+      "title": "Gordian Rooms 1: A curious heritage",
+      "price": 0.89,
+      "regular_price": 5.99,
+      "discount": 85,
+      "expiry": "2026-11-27T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937e-f49e-72b8-a22d-c71e0c302ba1": {
+    "state": {
+      "title": "EXO ONE",
+      "price": 2.47,
+      "regular_price": 16.49,
+      "discount": 85,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-2980-7114-83ef-a662a211d33e": {
+    "state": {
+      "title": "Cursed Treasure 2",
+      "price": 0.74,
+      "regular_price": 4.99,
+      "discount": 85,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-5dca-7198-98f7-9b21e8646487": {
+    "state": {
+      "title": "Cosmos Bit",
+      "price": 0.74,
+      "regular_price": 4.99,
+      "discount": 85,
+      "expiry": "2026-11-16T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-05b4-728d-93df-539a8be1dcd4": {
+    "state": {
+      "title": "Bug Academy",
+      "price": 1.46,
+      "regular_price": 9.75,
+      "discount": 85,
+      "expiry": "2026-11-27T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-34a8-73c7-8e90-994dc1edb5f6": {
+    "state": {
+      "title": "Automachef",
+      "price": 2.24,
+      "regular_price": 14.99,
+      "discount": 85,
+      "expiry": "2026-11-16T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1f06-7052-a7b0-57db0e08b9fd": {
+    "state": {
+      "title": "ANNO 2205",
+      "price": 5.99,
+      "regular_price": 39.99,
+      "discount": 85,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-5237-7117-8c29-988598f740e6": {
+    "state": {
+      "title": "AI: THE SOMNIUM FILES - nirvanA Initiative",
+      "price": 5.99,
+      "regular_price": 39.99,
+      "discount": 85,
+      "expiry": "2026-11-24T18:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-7aed-713c-a530-bdda009b4cd9": {
+    "state": {
+      "title": "CounterAttack: Uprising",
+      "price": 2.36,
+      "regular_price": 14.79,
+      "discount": 84,
+      "expiry": "2026-11-21T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
+  },
+  "018d937f-1996-7143-a848-9a2bbfb42ea9": {
+    "state": {
+      "title": "The Shapeshifting Detective",
+      "price": 2.51,
+      "regular_price": 14.79,
+      "discount": 83,
+      "expiry": "2026-11-17T19:00:00+01:00"
+    },
+    "last_seen": "2026-11-15T21:00:58.035352+00:00",
+    "last_sent": "2026-11-15T21:00:58.035352+00:00"
   }
 }
