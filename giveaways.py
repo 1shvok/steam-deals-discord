@@ -213,13 +213,6 @@ current_ids = {
 
 history_changed = False
 
-for giveaway_id in current_ids:
-
-    entry = history.get(giveaway_id)
-
-    if isinstance(entry, dict):
-        entry["last_seen"] = now.isoformat()
-        history_changed = True
 
 cutoff = now - timedelta(days=HISTORY_RETENTION_DAYS)
 
@@ -234,7 +227,10 @@ for giveaway_id, entry in list(history.items()):
     if giveaway_id in current_ids:
         continue
 
-    last_seen_text = entry.get("last_seen")
+    last_seen_text = (
+        entry.get("last_seen")
+        or entry.get("last_sent")
+    )
 
     if not last_seen_text:
         continue
