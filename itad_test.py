@@ -495,16 +495,45 @@ def get_steam_reviews(app_id):
             time.sleep(delay)
             continue
 
+        
         try:
             total_reviews = int(
                 query_summary.get("total_reviews", 0) or 0
             )
+            total_positive = int(
+                query_summary.get("total_positive", 0) or 0
+            )
+            total_negative = int(
+                query_summary.get("total_negative", 0) or 0
+            )
+
         except (TypeError, ValueError):
-            total_reviews = 0
+            print(
+                f"Steam reviews returned invalid counts for {app_id}."
+            )
+            return None
+
+        if (
+            total_reviews <= 0
+            or total_positive < 0
+            or total_negative < 0
+            or total_positive > total_reviews
+        ):
+            print(
+                f"Steam reviews returned inconsistent counts for {app_id}."
+            )
+            return None
+
+        positive_percentage = (
+            total_positive / total_reviews
+        ) * 100
 
         return {
             "review_score_desc": query_summary.get("review_score_desc"),
-            "total_reviews": total_reviews
+            "total_reviews": total_reviews,
+            "total_positive": total_positive,
+            "total_negative": total_negative,
+            "positive_percentage": positive_percentage
         }
 
     return None
@@ -689,27 +718,34 @@ for item in new_deals:
         )
         continue
 
-    review_score_desc = reviews.get("review_score_desc")
+    
     total_reviews = reviews.get("total_reviews", 0)
+    positive_percentage = reviews.get("positive_percentage")
 
-    if not review_score_desc or total_reviews <= 0:
+    if total_reviews < MIN_STEAM_REVIEWS:
         print(
-            f"SKIPPED: No Steam reviews: {deal['title']}"
+            f"SKIPPED: Too few Steam reviews "
+            f"({total_reviews}): {deal['title']}"
         )
         continue
 
-    if "negative" in review_score_desc.casefold():
+    if (
+        positive_percentage is None
+        or positive_percentage < MIN_STEAM_POSITIVE_PERCENT
+    ):
         print(
-            f"SKIPPED: Negative Steam reviews "
-            f"({review_score_desc}): {deal['title']}"
+            f"SKIPPED: Low positive Steam rating "
+            f"({positive_percentage}%): {deal['title']}"
         )
         continue
 
-    metadata["review_score_desc"] = review_score_desc
+    metadata["review_score_desc"] = reviews.get("review_score_desc")
     metadata["total_reviews"] = total_reviews
+    metadata["positive_percentage"] = positive_percentage
 
     item["steam_metadata"] = metadata
     eligible_deals.append(item)
+
 
 print(
     f"Eligible games with English subtitles: "
