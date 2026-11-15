@@ -533,8 +533,6 @@ def get_steam_metadata(itad_url):
 # Filter special editions
 # -------------------------
 
-import re
-
 EDITION_PATTERN = re.compile(
     r"\b("
     r"gold|premium|deluxe|ultimate|"
