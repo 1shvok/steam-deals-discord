@@ -339,31 +339,34 @@ STEAM_REVIEW_COOLDOWN_SECONDS = 300
 _last_steam_review_request = 0.0
 _steam_review_cooldown_until = 0.0
 
-
 def get_steam_reviews(app_id):
     global _last_steam_review_request
     global _steam_review_cooldown_until
 
-    # Stop sending requests if Steam has recently blocked us.
+    # Stop sending requests if Steam has recently returned errors.
     if time.monotonic() < _steam_review_cooldown_until:
         return None
 
-    url = f"https://store.steampowered.com/appreviews/{app_id}"
+    url = (
+        "https://api.steampowered.com/"
+        "IUserReviewsService/GetAppReviews/v1/"
+    )
 
-    params = {
-        "json": 1,
-        "language": "all",
-        "filter": "all",
-        "review_type": "all",
+    request_data = {
+        "appid": int(app_id),
+        "filter": 0,
+        "languages": ["all"],
+        "day_range": 0,
+        "review_type": 0,
+        "purchase_type": 1,
         "num_per_page": 1
     }
 
+    params = {
+        "input_json": json.dumps(request_data)
+    }
+
     headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (X11; Linux x86_64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/130.0.0.0 Safari/537.36"
-        ),
         "Accept": "application/json"
     }
 
@@ -449,7 +452,7 @@ def get_steam_reviews(app_id):
             return None
 
         try:
-            reviews_data = response.json()
+            api_data = response.json()
 
         except ValueError:
 
@@ -458,29 +461,9 @@ def get_steam_reviews(app_id):
                     time.monotonic() + STEAM_REVIEW_COOLDOWN_SECONDS
                 )
 
-                content_type = response.headers.get(
-                    "Content-Type", "unknown"
-                )
-
-                redirects = " -> ".join(
-                    f"{item.status_code} {item.url}"
-                    for item in response.history
-                ) or "none"
-
-                body_preview = (
-                    response.text[:300]
-                    .replace("\n", " ")
-                    .replace("\r", " ")
-                )
-
                 print(
-                    f"Steam reviews returned non-JSON data for {app_id} "
-                    f"(HTTP {response.status_code}, "
-                    f"Content-Type: {content_type})."
+                    f"Steam reviews returned invalid JSON for {app_id}."
                 )
-                print(f"Steam final URL: {response.url}")
-                print(f"Steam redirects: {redirects}")
-                print(f"Steam response preview: {body_preview!r}")
                 return None
 
             delay = min(15, 3 * attempt)
@@ -492,6 +475,12 @@ def get_steam_reviews(app_id):
 
             time.sleep(delay)
             continue
+
+        reviews_data = (
+            api_data.get("response")
+            if isinstance(api_data, dict)
+            else None
+        )
 
         query_summary = (
             reviews_data.get("query_summary")
@@ -516,7 +505,6 @@ def get_steam_reviews(app_id):
             time.sleep(delay)
             continue
 
-        
         try:
             total_reviews = int(
                 query_summary.get("total_reviews", 0) or 0
