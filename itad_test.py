@@ -462,11 +462,25 @@ def get_steam_reviews(app_id):
                     "Content-Type", "unknown"
                 )
 
+                redirects = " -> ".join(
+                    f"{item.status_code} {item.url}"
+                    for item in response.history
+                ) or "none"
+
+                body_preview = (
+                    response.text[:300]
+                    .replace("\n", " ")
+                    .replace("\r", " ")
+                )
+
                 print(
                     f"Steam reviews returned non-JSON data for {app_id} "
                     f"(HTTP {response.status_code}, "
                     f"Content-Type: {content_type})."
                 )
+                print(f"Steam final URL: {response.url}")
+                print(f"Steam redirects: {redirects}")
+                print(f"Steam response preview: {body_preview!r}")
                 return None
 
             delay = min(15, 3 * attempt)
