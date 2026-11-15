@@ -518,6 +518,8 @@ def get_steam_reviews(app_id):
             or total_positive < 0
             or total_negative < 0
             or total_positive > total_reviews
+            or total_negative > total_reviews
+            or total_positive + total_negative > total_reviews
         ):
             print(
                 f"Steam reviews returned inconsistent counts for {app_id}."
