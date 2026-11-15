@@ -14,7 +14,14 @@ from settings import (
     MIN_STEAM_POSITIVE_PERCENT,
     INDIE_FILTER_MODE,
     ITAD_PAGE_LIMIT,
-    ITAD_MAX_PAGES
+    ITAD_MAX_PAGES,
+    SUSPICIOUS_HIGH_PRICE,
+    SUSPICIOUS_EXTREME_DISCOUNT,
+    SUSPICIOUS_HISTORY_LOW_MULTIPLIER,
+    SUSPICIOUS_MANY_GENRES,
+    SUSPICIOUS_LOW_REVIEW_COUNT,
+    SUSPICIOUS_LOW_POSITIVE_PERCENT,
+    SUSPICIOUS_MIN_SIGNALS
 )
 
 API_KEY = os.environ["ITAD_API_KEY"]
@@ -664,6 +671,83 @@ EDITION_PATTERN = re.compile(
 def is_special_edition(title):
     return bool(EDITION_PATTERN.search(title))
 
+def is_suspicious_game(deal, metadata, reviews):
+
+    deal_info = deal.get("deal", {})
+
+    price_data = deal_info.get("price", {})
+    regular_data = deal_info.get("regular", {})
+    history_low_data = deal_info.get("historyLow", {})
+
+    try:
+        current_price = float(price_data.get("amount"))
+        regular_price = float(regular_data.get("amount"))
+        discount = float(deal_info.get("cut"))
+
+    except (TypeError, ValueError):
+        print(
+            f"WARNING: Invalid pricing data for {deal.get('title')}."
+        )
+        return False
+
+    signals = []
+
+    # Signal 1: High regular price combined with an extreme discount.
+    if (
+        regular_price >= SUSPICIOUS_HIGH_PRICE
+        and discount >= SUSPICIOUS_EXTREME_DISCOUNT
+    ):
+        signals.append("high regular price + extreme discount")
+
+    # Signal 2: Current price is significantly above the historical low.
+    try:
+        history_low = float(history_low_data.get("amount"))
+    except (TypeError, ValueError, AttributeError):
+        history_low = None
+
+    if (
+        history_low is not None
+        and history_low > 0
+        and current_price > (
+            history_low * SUSPICIOUS_HISTORY_LOW_MULTIPLIER
+        )
+    ):
+        signals.append("price above historical low")
+
+    # Signal 3: An unusually large number of genres.
+    genres = metadata.get("genres", [])
+
+    if (
+        isinstance(genres, list)
+        and len(genres) >= SUSPICIOUS_MANY_GENRES
+    ):
+        signals.append("many listed genres")
+
+    # Signal 4: Relatively small review count.
+    total_reviews = reviews.get("total_reviews", 0)
+
+    if total_reviews < SUSPICIOUS_LOW_REVIEW_COUNT:
+        signals.append("low review count")
+
+    # Signal 5: Positive rating below 80%.
+    positive_percentage = reviews.get("positive_percentage")
+
+    if (
+        positive_percentage is not None
+        and positive_percentage < SUSPICIOUS_LOW_POSITIVE_PERCENT
+    ):
+        signals.append("relatively low positive rating")
+
+    if len(signals) >= SUSPICIOUS_MIN_SIGNALS:
+        print(
+            f"SKIPPED: Suspicious game: {deal.get('title')} "
+            f"({len(signals)} signals: {', '.join(signals)})"
+        )
+        return True
+
+    return False
+
+
 # -------------------------
 # Filter using Steam metadata
 # -------------------------
@@ -741,6 +825,9 @@ for item in new_deals:
         )
         continue
 
+    if is_suspicious_game(deal, metadata, reviews):
+        continue
+    
     metadata["review_score_desc"] = reviews.get("review_score_desc")
     metadata["total_reviews"] = total_reviews
     metadata["positive_percentage"] = positive_percentage
