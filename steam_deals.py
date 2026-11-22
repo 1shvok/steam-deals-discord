@@ -6,6 +6,7 @@ import re
 import html
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone, timedelta
+from history_store import save_json_atomic
 from settings import (
     ITAD_COUNTRY,
     STEAM_SHOP_ID,
@@ -1022,19 +1023,8 @@ for item in new_deals:
 if not embeds:
 
     if history_changed:
-        with open(
-            HISTORY_FILE,
-            "w",
-            encoding="utf-8"
-        ) as file:
-            json.dump(
-                history,
-                file,
-                indent=2,
-                ensure_ascii=False
-            )
-
-        print("History changes saved.")
+    save_json_atomic(HISTORY_FILE, history)
+    print("History changes saved.")
 
     print("No new or changed deals.")
     print("Nothing to send.")
@@ -1160,17 +1150,7 @@ for batch_number, batch_items in enumerate(batches, start=1):
             "last_sent": now.isoformat()
         }
 
-    with open(
-        HISTORY_FILE,
-        "w",
-        encoding="utf-8"
-    ) as file:
-        json.dump(
-            history,
-            file,
-            indent=2,
-            ensure_ascii=False
-        )
+    save_json_atomic(HISTORY_FILE, history)
 
     time.sleep(1)
 
