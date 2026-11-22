@@ -21,7 +21,7 @@ The bot runs through GitHub Actions and sends notifications to Discord using a w
 
 ## Project Structure
 
-- `itad_test.py` — Main Steam deals tracker.
+- `steam_deals.py` — Main Steam deals tracker.
 - `giveaways.py` — Steam giveaways tracker.
 - `settings.py` — Bot configuration and filters.
 - `sent_deals.json` — Steam deals notification history.
