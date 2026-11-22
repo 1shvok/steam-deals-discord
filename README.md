@@ -26,7 +26,7 @@ The bot runs through GitHub Actions and sends notifications to Discord using a w
 - `settings.py` — Bot configuration and filters.
 - `sent_deals.json` — Steam deals notification history.
 - `sent_giveaways.json` — Giveaway notification history.
-- `.github/workflows/test.yml` — GitHub Actions workflow.
+- `.github/workflows/steam_notifications.yml` — GitHub Actions workflow.
 - `README.md` — Project documentation.
 
 ## Configuration
