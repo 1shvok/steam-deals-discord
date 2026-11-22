@@ -1,11 +1,10 @@
-name: Test ITAD Discord
+name: Steam Deals and Giveaways
 
 on:
   workflow_dispatch:
-
   schedule:
     - cron: "17 * * * *"
-    
+
 concurrency:
   group: steam-deals-discord
   cancel-in-progress: false
@@ -14,10 +13,9 @@ permissions:
   contents: write
 
 jobs:
-  test:
+  run-bot:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -47,9 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git add sent_deals.json sent_giveaways.json
-
           if git diff --cached --quiet; then
             echo "No history changes to commit."
           else
