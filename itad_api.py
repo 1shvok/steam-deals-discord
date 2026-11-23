@@ -5,10 +5,11 @@ import requests
 from settings import (
     ITAD_COUNTRY,
     STEAM_SHOP_ID,
-    MIN_DISCOUNT_PERCENT,
     ITAD_PAGE_LIMIT,
     ITAD_MAX_PAGES
 )
+
+from deal_filters import MIN_DISCOUNT_PERCENT
 
 
 ITAD_URL = "https://api.isthereanydeal.com/deals/v2"
