@@ -12,15 +12,9 @@ def main():
     HISTORY_RETENTION_DAYS = 14
     now = datetime.now(timezone.utc)
 
-    # Здесь будет вся остальная логика программы
-
-
     # -------------------------
     # Load sent deals history
     # -------------------------
-
-    HISTORY_RETENTION_DAYS = 14
-    now = datetime.now(timezone.utc)
     
     try:
         with open(HISTORY_FILE, "r", encoding="utf-8") as file:
