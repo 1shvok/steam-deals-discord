@@ -23,10 +23,11 @@ The bot runs through GitHub Actions and sends notifications to Discord using a w
 
 - `steam_deals.py` — Main Steam deals tracker.
 - `giveaways.py` — Steam giveaways tracker.
-- `settings.py` — Bot configuration and filters.
+- `settings.py` — General configuration and ITAD pagination settings.
 - `history_store.py` — Safe JSON history storage.
 - `steam_api.py` — Steam API requests, game metadata and reviews.
 - `itad_api.py` — IsThereAnyDeal API requests and deal retrieval.
+- `deal_filters.py` — All deal filtering rules, thresholds and Steam eligibility checks.
 - `sent_deals.json` — Steam deals notification history.
 - `sent_giveaways.json` — Giveaway notification history.
 - `.github/workflows/steam_notifications.yml` — GitHub Actions workflow.
@@ -34,7 +35,10 @@ The bot runs through GitHub Actions and sends notifications to Discord using a w
 
 ## Configuration
 
-The bot settings are stored in `settings.py`.
+The bot configuration is divided between two files.
+
+- `deal_filters.py` — All deal filtering rules and thresholds.
+- `settings.py` — General settings and ITAD pagination.
 
 Current deal filters:
 
@@ -43,7 +47,7 @@ Current deal filters:
 - Minimum positive rating: 70%.
 - Indie filter mode: balanced.
 
-Additional suspicious-game filters and ITAD pagination limits can also be configured in this file.
+Additional suspicious-game filters can also be configured in `deal_filters.py`.
 
 ## Requirements
 
