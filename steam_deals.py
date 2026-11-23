@@ -3,9 +3,8 @@ import os
 import time
 import requests
 import re
-import html
-from bs4 import BeautifulSoup
 from datetime import datetime, timezone, timedelta
+from steam_api import get_steam_reviews, get_steam_metadata
 from history_store import save_json_atomic
 from settings import (
     ITAD_COUNTRY,
