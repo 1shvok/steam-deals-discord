@@ -2,23 +2,10 @@ import json
 import os
 import time
 import requests
-import re
 from datetime import datetime, timezone, timedelta
 from itad_api import get_deals
-from steam_api import get_steam_reviews, get_steam_metadata
+from deal_filters import get_game_deals, filter_new_deals
 from history_store import save_json_atomic
-from settings import (
-    MIN_STEAM_REVIEWS,
-    MIN_STEAM_POSITIVE_PERCENT,
-    INDIE_FILTER_MODE,
-    SUSPICIOUS_HIGH_PRICE,
-    SUSPICIOUS_EXTREME_DISCOUNT,
-    SUSPICIOUS_HISTORY_LOW_MULTIPLIER,
-    SUSPICIOUS_MANY_GENRES,
-    SUSPICIOUS_LOW_REVIEW_COUNT,
-    SUSPICIOUS_LOW_POSITIVE_PERCENT,
-    SUSPICIOUS_MIN_SIGNALS
-)
 
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
 
@@ -84,16 +71,7 @@ deals = get_deals()
 # Filter games only
 # -------------------------
 
-games = []
-
-for deal in deals:
-
-    if deal.get("type") != "game":
-        continue
-
-    games.append(deal)
-
-print(f"Game deals: {len(games)}")
+games = get_game_deals(deals)
 
 
 # -------------------------
@@ -198,200 +176,10 @@ for deal in games:
 print(f"New or changed deals: {len(new_deals)}")
 
 # -------------------------
-# Filter special editions
+# Filter new deals
 # -------------------------
 
-EDITION_PATTERN = re.compile(
-    r"\b("
-    r"gold|premium|deluxe|ultimate|"
-    r"complete|collector'?s|definitive|"
-    r"anniversary|special|limited|"
-    r"game of the year|goty"
-    r")\s+edition\b",
-    re.IGNORECASE
-)
-
-def is_special_edition(title):
-    return bool(EDITION_PATTERN.search(title))
-
-def is_suspicious_game(deal, metadata, reviews):
-
-    deal_info = deal.get("deal", {})
-
-    price_data = deal_info.get("price", {})
-    regular_data = deal_info.get("regular", {})
-    history_low_data = deal_info.get("historyLow", {})
-
-    try:
-        current_price = float(price_data.get("amount"))
-        regular_price = float(regular_data.get("amount"))
-        discount = float(deal_info.get("cut"))
-
-    except (TypeError, ValueError):
-        print(
-            f"WARNING: Invalid pricing data for {deal.get('title')}."
-        )
-        return False
-
-    signals = []
-
-    # Signal 1: High regular price combined with an extreme discount.
-    if (
-        regular_price >= SUSPICIOUS_HIGH_PRICE
-        and discount >= SUSPICIOUS_EXTREME_DISCOUNT
-    ):
-        signals.append("high regular price + extreme discount")
-
-    # Signal 2: Current price is significantly above the historical low.
-    try:
-        history_low = float(history_low_data.get("amount"))
-    except (TypeError, ValueError, AttributeError):
-        history_low = None
-
-    if (
-        history_low is not None
-        and history_low > 0
-        and current_price > (
-            history_low * SUSPICIOUS_HISTORY_LOW_MULTIPLIER
-        )
-    ):
-        signals.append("price above historical low")
-
-    # Signal 3: An unusually large number of genres.
-    genres = metadata.get("genres", [])
-
-    if (
-        isinstance(genres, list)
-        and len(genres) >= SUSPICIOUS_MANY_GENRES
-    ):
-        signals.append("many listed genres")
-
-    # Signal 4: Relatively small review count.
-    total_reviews = reviews.get("total_reviews", 0)
-
-    if total_reviews < SUSPICIOUS_LOW_REVIEW_COUNT:
-        signals.append("low review count")
-
-    # Signal 5: Positive rating below 80%.
-    positive_percentage = reviews.get("positive_percentage")
-
-    if (
-        positive_percentage is not None
-        and positive_percentage < SUSPICIOUS_LOW_POSITIVE_PERCENT
-    ):
-        signals.append("relatively low positive rating")
-
-    if len(signals) >= SUSPICIOUS_MIN_SIGNALS:
-        print(
-            f"SKIPPED: Suspicious game: {deal.get('title')} "
-            f"({len(signals)} signals: {', '.join(signals)})"
-        )
-        return True
-
-    return False
-
-
-# -------------------------
-# Filter using Steam metadata
-# -------------------------
-
-
-eligible_deals = []
-review_api_checks = 0
-review_api_failures = 0
-
-for item in new_deals:
-
-    deal = item["deal"]
-    url = deal["deal"]["url"]
-
-    if is_special_edition(deal["title"]):
-        print(f"SKIPPED: Special edition: {deal['title']}")
-        continue
-
-    metadata = get_steam_metadata(url)
-
-    if not metadata:
-        print(f"SKIPPED: Could not get Steam data: {deal['title']}")
-        continue
-
-    if metadata.get("type") != "game":
-        print(
-            f"SKIPPED: Not a full game: "
-            f"{deal['title']} ({metadata.get('type')})"
-        )
-        continue
-
-    if metadata.get("early_access"):
-        print(
-            f"SKIPPED: Early Access game: {deal['title']}"
-        )
-        continue
-
-    if not metadata.get("english_supported"):
-        print(
-            f"SKIPPED: No English language support listed: "
-            f"{deal['title']}"
-        )
-        continue
-
-    # Check reviews only after all other filters.
-    review_api_checks += 1
-    reviews = get_steam_reviews(metadata.get("app_id"))
-
-    if reviews is None:
-        review_api_failures += 1
-        print(
-            f"SKIPPED: Steam review data unavailable: "
-            f"{deal['title']}"
-        )
-        continue
-
-    
-    total_reviews = reviews.get("total_reviews", 0)
-    positive_percentage = reviews.get("positive_percentage")
-
-    if total_reviews < MIN_STEAM_REVIEWS:
-        print(
-            f"SKIPPED: Too few Steam reviews "
-            f"({total_reviews}): {deal['title']}"
-        )
-        continue
-
-    if (
-        positive_percentage is None
-        or positive_percentage < MIN_STEAM_POSITIVE_PERCENT
-    ):
-        print(
-            f"SKIPPED: Low positive Steam rating "
-            f"({positive_percentage}%): {deal['title']}"
-        )
-        continue
-
-    if is_suspicious_game(deal, metadata, reviews):
-        continue
-    
-    metadata["review_score_desc"] = reviews.get("review_score_desc")
-    metadata["total_reviews"] = total_reviews
-    metadata["positive_percentage"] = positive_percentage
-
-    item["steam_metadata"] = metadata
-    eligible_deals.append(item)
-
-
-print(
-    f"Eligible games with English subtitles: "
-    f"{len(eligible_deals)}"
-)
-
-if review_api_failures:
-    print(
-        f"::warning::Steam review data unavailable for "
-        f"{review_api_failures} of {review_api_checks} candidates. "
-        "Affected games were skipped."
-    )
-
-new_deals = eligible_deals
+new_deals = filter_new_deals(new_deals)
 
 
 # -------------------------
