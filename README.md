@@ -25,6 +25,7 @@ The bot runs through GitHub Actions and sends notifications to Discord using a w
 - `giveaways.py` — Steam giveaways tracker.
 - `settings.py` — Bot configuration and filters.
 - `history_store.py` — Safe JSON history storage.
+- `steam_api.py` — Steam API requests, game metadata and reviews.
 - `sent_deals.json` — Steam deals notification history.
 - `sent_giveaways.json` — Giveaway notification history.
 - `.github/workflows/steam_notifications.yml` — GitHub Actions workflow.
