@@ -1023,8 +1023,8 @@ for item in new_deals:
 if not embeds:
 
     if history_changed:
-    save_json_atomic(HISTORY_FILE, history)
-    print("History changes saved.")
+        save_json_atomic(HISTORY_FILE, history)
+        print("History changes saved.")
 
     print("No new or changed deals.")
     print("Nothing to send.")
