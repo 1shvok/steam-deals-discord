@@ -28,6 +28,7 @@ The bot runs through GitHub Actions and sends notifications to Discord using a w
 - `steam_api.py` — Steam API requests, game metadata and reviews.
 - `itad_api.py` — IsThereAnyDeal API requests and deal retrieval.
 - `deal_filters.py` — All deal filtering rules, thresholds and Steam eligibility checks.
+- `discord_notifications.py` — Discord embed creation, batching and notification delivery.
 - `sent_deals.json` — Steam deals notification history.
 - `sent_giveaways.json` — Giveaway notification history.
 - `.github/workflows/steam_notifications.yml` — GitHub Actions workflow.
